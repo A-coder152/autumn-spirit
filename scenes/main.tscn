@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=3 format=3 uid="uid://b31gw4wegrc68"]
 
 [ext_resource type="Texture2D" uid="uid://cpmay2uawu1bj" path="res://icon.svg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -9,13 +10,14 @@ custom_minimum_size = Vector2(1152, 648)
 color = Color(0.0408558, 0.0408552, 0.0613972, 1)
 
 [node name="leaf guy" type="Sprite2D" parent="."]
-position = Vector2(576, 285)
+position = Vector2(502, 285)
 texture = ExtResource("1_o5qli")
 
 [node name="UI" type="Control" parent="."]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("2_0wfyh")
 
 [node name="vbox" type="VBoxContainer" parent="UI"]
 layout_mode = 1
@@ -68,6 +70,10 @@ size_flags_horizontal = 3
 text = "Go to Shop
 "
 
+[node name="status" type="Label" parent="UI/vbox"]
+layout_mode = 2
+text = "Status: Chopped"
+
 [node name="shop" type="Control" parent="UI"]
 visible = false
 layout_mode = 1
@@ -106,3 +112,17 @@ text = "Buy sigma"
 [node name="Leave" type="Button" parent="UI/shop/VBoxContainer"]
 layout_mode = 2
 text = "Leave Shop"
+
+[node name="Drain" type="Timer" parent="."]
+autostart = true
+
+[node name="Generate" type="Timer" parent="."]
+autostart = true
+
+[node name="Autosave" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="Drain" to="UI" method="_on_drain_timeout"]
+[connection signal="timeout" from="Generate" to="UI" method="_on_generate_timeout"]
+[connection signal="timeout" from="Autosave" to="UI" method="_on_autosave_timeout"]
