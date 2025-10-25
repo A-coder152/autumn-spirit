@@ -1,5 +1,108 @@
-[gd_scene format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=2 format=3 uid="uid://b31gw4wegrc68"]
 
-[node name="Main" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://cpmay2uawu1bj" path="res://icon.svg" id="1_o5qli"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+color = Color(0.0408558, 0.0408552, 0.0613972, 1)
 
 [node name="leaf guy" type="Sprite2D" parent="."]
+position = Vector2(576, 285)
+texture = ExtResource("1_o5qli")
+
+[node name="UI" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="vbox" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 685.0
+offset_top = 234.0
+offset_right = -274.0
+offset_bottom = -317.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="leaves" type="HBoxContainer" parent="UI/vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/vbox/leaves"]
+layout_mode = 2
+text = "Leaves: x"
+
+[node name="Button" type="Button" parent="UI/vbox/leaves"]
+layout_mode = 2
+text = "Collect Leaves
+"
+
+[node name="happiness" type="HBoxContainer" parent="UI/vbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/vbox/happiness"]
+layout_mode = 2
+text = "Happiness: y"
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/happiness"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="misc" type="HBoxContainer" parent="UI/vbox"]
+layout_mode = 2
+
+[node name="feed" type="Button" parent="UI/vbox/misc"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Feed"
+
+[node name="shop" type="Button" parent="UI/vbox/misc"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Go to Shop
+"
+
+[node name="shop" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.294118, 0.294118, 0.294118, 0.513726)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/shop/VBoxContainer"]
+layout_mode = 2
+text = "shop"
+horizontal_alignment = 1
+
+[node name="Buy" type="Button" parent="UI/shop/VBoxContainer"]
+layout_mode = 2
+text = "Buy sigma"
+
+[node name="Leave" type="Button" parent="UI/shop/VBoxContainer"]
+layout_mode = 2
+text = "Leave Shop"
