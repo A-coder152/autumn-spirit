@@ -1,16 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=11 format=3 uid="uid://b31gw4wegrc68"]
 
 [ext_resource type="Texture2D" uid="uid://cpmay2uawu1bj" path="res://icon.svg" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0, 0.69624, 0, 1)
+border_color = Color(0, 0.41793, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(0.168067, 1, 0.317253, 1)
+border_width_top = 6
+border_width_bottom = 6
+border_color = Color(0.470588, 1, 0.505882, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.758697, 1, 0.760107, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+bg_color = Color(1, 0.717647, 0.196078, 1)
+border_width_top = 6
+border_width_bottom = 6
+border_color = Color(1, 0.785078, 0.556753, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyhfs"]
+bg_color = Color(1, 0.859302, 0.714454, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(0.307819, 0.715717, 0.999997, 1)
+border_width_top = 6
+border_width_bottom = 6
+border_color = Color(0.518104, 0.791062, 0.999999, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sugp2"]
+bg_color = Color(0.717647, 0.87451, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Node2D" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1152, 648)
-color = Color(0.0408558, 0.0408552, 0.0613972, 1)
+color = Color(1, 1, 0.721569, 1)
 
 [node name="leaf guy" type="Sprite2D" parent="."]
-position = Vector2(502, 285)
+position = Vector2(406, 300)
+scale = Vector2(2.3125, 2.3125)
 texture = ExtResource("1_o5qli")
 
 [node name="UI" type="Control" parent="."]
@@ -19,60 +85,136 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_0wfyh")
 
+[node name="topbar" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_top = 10.0
+offset_right = 1152.0
+offset_bottom = 80.0
+alignment = 1
+
+[node name="leaves" type="Panel" parent="UI/topbar"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
+
+[node name="Label" type="Label" parent="UI/topbar/leaves"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.461028, 1, 0.429352, 1)
+theme_override_font_sizes/font_size = 40
+text = "Leaves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="vbox" type="VBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 685.0
-offset_top = 234.0
-offset_right = -274.0
-offset_bottom = -317.0
+offset_left = 592.0
+offset_top = 160.0
+offset_right = -278.0
+offset_bottom = -207.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 6
+theme_override_constants/separation = 10
 
-[node name="leaves" type="HBoxContainer" parent="UI/vbox"]
+[node name="leafbar" type="HBoxContainer" parent="UI/vbox"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/vbox/leaves"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/leafbar"]
 layout_mode = 2
-text = "Leaves: x"
-
-[node name="Button" type="Button" parent="UI/vbox/leaves"]
-layout_mode = 2
-text = "Collect Leaves
-"
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.641147, 0.165371, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o6xl0")
+max_value = 300.0
+value = 50.0
 
 [node name="happiness" type="HBoxContainer" parent="UI/vbox"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/vbox/happiness"]
-layout_mode = 2
-text = "Happiness: y"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/vbox/happiness"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.59718, 0.410154, 2.88785e-07, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_0wfyh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jyhfs")
+value = 50.0
 
-[node name="misc" type="HBoxContainer" parent="UI/vbox"]
+[node name="Rest" type="HBoxContainer" parent="UI/vbox"]
 layout_mode = 2
 
-[node name="feed" type="Button" parent="UI/vbox/misc"]
+[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/Rest"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(9.14484e-07, 0.388402, 0.600409, 1)
+theme_override_colors/font_outline_color = Color(8.32662e-06, 0.254206, 0.620967, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sugp2")
+value = 50.0
+
+[node name="Control" type="Control" parent="UI/vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="actions" type="HBoxContainer" parent="UI/vbox"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="collect" type="Button" parent="UI/vbox/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
+text = "Collect Leaves
+"
+
+[node name="feed" type="Button" parent="UI/vbox/actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
 text = "Feed"
 
-[node name="shop" type="Button" parent="UI/vbox/misc"]
+[node name="status" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 269.0
+offset_top = 517.0
+offset_right = 879.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(0.371419, 0.36183, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Status"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bottombar" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_top = 600.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="shop" type="Button" parent="UI/bottombar"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Go to Shop
 "
-
-[node name="status" type="Label" parent="UI/vbox"]
-layout_mode = 2
-text = "Status: Chopped"
 
 [node name="shop" type="Control" parent="UI"]
 visible = false

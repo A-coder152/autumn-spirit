@@ -1,14 +1,16 @@
 extends Control
 
-@onready var leaves_label = $vbox/leaves/Label
-@onready var collect_btn = $vbox/leaves/Button
+@onready var leaves_label = $topbar/leaves/Label
+@onready var collect_btn = $vbox/actions/collect
 @onready var happiness_bar = $vbox/happiness/ProgressBar
-@onready var feed_btn = $vbox/misc/feed
-@onready var shop_btn = $vbox/misc/shop
-@onready var status_label = $vbox/status
+@onready var feed_btn = $vbox/actions/feed
+@onready var shop_btn = $bottombar/shop
+@onready var status_label = $status
 @onready var shop_window = $shop
 @onready var buy_bell_btn = $shop/VBoxContainer/Buy
 @onready var close_shop_btn = $shop/VBoxContainer/Leave
+@onready var uncollected_bar = $vbox/leafbar/ProgressBar
+@onready var rest_bar = $vbox/Rest/ProgressBar
 
 func _ready() -> void:
 	GameManager.stats_changed.connect(_on_stats_changed)
@@ -18,11 +20,13 @@ func _ready() -> void:
 	shop_btn.pressed.connect(_on_shop_pressed)
 	buy_bell_btn.pressed.connect(_on_buy_bell_pressed)
 	close_shop_btn.pressed.connect(hide_shop)
-	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness)
+	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
 
-func _on_stats_changed(leaves:int, uncollected:int, happiness:float) -> void:
-	leaves_label.text = "Leaves: %d (+%d uncollected)" % [leaves, uncollected]
+func _on_stats_changed(leaves:int, uncollected:int, happiness:float, rest) -> void:
+	leaves_label.text = str(leaves)
 	happiness_bar.value = happiness
+	uncollected_bar.value = uncollected
+	rest_bar.value = rest
 
 func _on_status_message(msg:String) -> void:
 	status_label.text = msg
@@ -40,7 +44,7 @@ func hide_shop() -> void:
 	shop_window.hide()
 
 func _on_buy_bell_pressed() -> void:
-	GameManager.buy_wind_bell()
+	GameManager.buy_upgrade(0)
 
 func _on_autosave_timeout() -> void:
 	GameManager.autosave_timeout()
