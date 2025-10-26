@@ -23,9 +23,14 @@ var rest_shed_gain_per_minute = 100. / 360.
 var rest_nothappy_drain_per_minute = 100. / 480.
 
 var items = [
-	preload("uid://hvpwabcna2fs")
+	preload("uid://hvpwabcna2fs"),
+	preload("uid://clesv63w70jin"), # below here is test
+	preload("uid://cvephtx8fnhhq"),
+	preload("uid://cho36407sfo2m"),
+	preload("uid://xdeoy4ff1yub"),
+	preload("uid://dergrj8ka1o1n")
 ]
-var item_unlocks = [false]
+var item_unlocks = [false, false, false, false, false, false]
 
 var last_update
 var loneliness_time = 480
@@ -42,7 +47,7 @@ func _load_or_init() -> void:
 	leaves = (data.get("leaves", 0))
 	uncollected_leaves = (data.get("uncollected_leaves", 0))
 	happiness = (data.get("happiness", 80.0))
-	item_unlocks = (data.get("item_unlocks", []))
+	item_unlocks = (data.get("item_unlocks", item_unlocks))
 	away_drain_per_minute = (data.get("away_drain_per_minute", 2.0))
 	max_leaves_per_minute = (data.get("max_leaves_per_minute", 10.0))
 	last_update = data.get("last_update", Time.get_unix_time_from_system())

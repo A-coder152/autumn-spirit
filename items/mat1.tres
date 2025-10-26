@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_1q6pp")
 item_name = "Green mat"
+desc = "A comfortable mat that boosts rest gain by 10%."
 cost = 50
 type = 0
 effect = 7
