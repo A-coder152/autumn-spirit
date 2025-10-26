@@ -44,6 +44,8 @@ func _load_or_init() -> void:
 	away_drain_per_minute = (data.get("away_drain_per_minute", 2.0))
 	max_leaves_per_minute = (data.get("max_leaves_per_minute", 10.0))
 	last_update = data.get("last_update", Time.get_unix_time_from_system())
+	environment = data.get("environment", "outside")
+	rest = data.get("rest", 80.0)
 	_notify_status("Welcome back")
 
 func _save() -> void:
@@ -54,7 +56,9 @@ func _save() -> void:
 		"upgrade_unlocks": upgrade_unlocks,
 		"away_drain_per_minute": away_drain_per_minute,
 		"max_leaves_per_minute": max_leaves_per_minute,
-		"last_update": last_update
+		"last_update": last_update,
+		"rest": rest,
+		"environment": environment
 	}
 	Save.save_game(data)
 

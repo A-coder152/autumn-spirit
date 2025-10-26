@@ -68,24 +68,19 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Node2D" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(1152, 648)
-color = Color(1, 1, 0.721569, 1)
-
-[node name="leaf guy" type="Sprite2D" parent="."]
-position = Vector2(406, 300)
-scale = Vector2(2.3125, 2.3125)
-texture = ExtResource("1_o5qli")
-
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_0wfyh")
 
-[node name="topbar" type="HBoxContainer" parent="UI"]
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(1, 1, 0.721569, 1)
+
+[node name="topbar" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1152, 0)
 layout_mode = 0
 offset_top = 10.0
@@ -93,12 +88,12 @@ offset_right = 1152.0
 offset_bottom = 80.0
 alignment = 1
 
-[node name="leaves" type="Panel" parent="UI/topbar"]
+[node name="leaves" type="Panel" parent="topbar"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tipki")
 
-[node name="Label" type="Label" parent="UI/topbar/leaves"]
+[node name="Label" type="Label" parent="topbar/leaves"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +106,7 @@ text = "Leaves"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="vbox" type="VBoxContainer" parent="UI"]
+[node name="vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,10 +119,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="leafbar" type="HBoxContainer" parent="UI/vbox"]
+[node name="leafbar" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/leafbar"]
+[node name="ProgressBar" type="ProgressBar" parent="vbox/leafbar"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0.641147, 0.165371, 1)
@@ -137,10 +132,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_o6xl0")
 max_value = 300.0
 value = 50.0
 
-[node name="happiness" type="HBoxContainer" parent="UI/vbox"]
+[node name="happiness" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/happiness"]
+[node name="ProgressBar" type="ProgressBar" parent="vbox/happiness"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -150,10 +145,10 @@ theme_override_styles/background = SubResource("StyleBoxFlat_0wfyh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jyhfs")
 value = 50.0
 
-[node name="Rest" type="HBoxContainer" parent="UI/vbox"]
+[node name="Rest" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/vbox/Rest"]
+[node name="ProgressBar" type="ProgressBar" parent="vbox/Rest"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(9.14484e-07, 0.388402, 0.600409, 1)
@@ -163,16 +158,16 @@ theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sugp2")
 value = 50.0
 
-[node name="Control" type="Control" parent="UI/vbox"]
+[node name="Control" type="Control" parent="vbox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="actions" type="HBoxContainer" parent="UI/vbox"]
+[node name="actions" type="HBoxContainer" parent="vbox"]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="collect" type="Button" parent="UI/vbox/actions"]
+[node name="collect" type="Button" parent="vbox/actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
@@ -182,7 +177,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
 text = "Collect Leaves
 "
 
-[node name="feed" type="Button" parent="UI/vbox/actions"]
+[node name="feed" type="Button" parent="vbox/actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
@@ -191,7 +186,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
 text = "Feed"
 
-[node name="status" type="Label" parent="UI"]
+[node name="status" type="Label" parent="."]
 layout_mode = 2
 offset_left = 269.0
 offset_top = 517.0
@@ -203,20 +198,30 @@ text = "Status"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bottombar" type="HBoxContainer" parent="UI"]
+[node name="bottombar" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1152, 0)
 layout_mode = 0
 offset_top = 600.0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="shop" type="Button" parent="UI/bottombar"]
+[node name="shed" type="Button" parent="bottombar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shed"
+
+[node name="shop" type="Button" parent="bottombar"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Go to Shop
 "
 
-[node name="shop" type="Control" parent="UI"]
+[node name="leaf guy" type="Sprite2D" parent="."]
+position = Vector2(406, 300)
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("1_o5qli")
+
+[node name="shop" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -225,7 +230,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/shop"]
+[node name="ColorRect" type="ColorRect" parent="shop"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,7 +239,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.294118, 0.294118, 0.294118, 0.513726)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/shop"]
+[node name="VBoxContainer" type="VBoxContainer" parent="shop"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -242,18 +247,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/shop/VBoxContainer"]
+[node name="Label" type="Label" parent="shop/VBoxContainer"]
 layout_mode = 2
 text = "shop"
 horizontal_alignment = 1
 
-[node name="Buy" type="Button" parent="UI/shop/VBoxContainer"]
+[node name="Buy" type="Button" parent="shop/VBoxContainer"]
 layout_mode = 2
 text = "Buy sigma"
 
-[node name="Leave" type="Button" parent="UI/shop/VBoxContainer"]
+[node name="Leave" type="Button" parent="shop/VBoxContainer"]
 layout_mode = 2
 text = "Leave Shop"
+
+[node name="shed" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="shed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.189007, 0.0977894, 4.81308e-08, 1)
 
 [node name="Update" type="Timer" parent="."]
 autostart = true
@@ -262,5 +284,6 @@ autostart = true
 wait_time = 15.0
 autostart = true
 
-[connection signal="timeout" from="Update" to="UI" method="_on_generate_timeout"]
-[connection signal="timeout" from="Autosave" to="UI" method="_on_autosave_timeout"]
+[connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
+[connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
+[connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]
