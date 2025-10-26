@@ -50,7 +50,4 @@ func _on_autosave_timeout() -> void:
 	GameManager.autosave_timeout()
 
 func _on_generate_timeout() -> void:
-	GameManager.generate_timeout()
-
-func _on_drain_timeout() -> void:
-	GameManager.drain_timeout()
+	GameManager.update_stuff()
