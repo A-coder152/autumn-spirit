@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=14 format=3 uid="uid://b31gw4wegrc68"]
 
-[ext_resource type="Texture2D" uid="uid://cpmay2uawu1bj" path="res://icon.svg" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://d4bm6g7s3t61w" path="res://images/happiness.png" id="3_tefeu"]
+[ext_resource type="Texture2D" uid="uid://wvbatnnwh2nm" path="res://images/pillow.png" id="4_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bl238qnj4wfa8" path="res://images/fallthing.png" id="5_tipki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.69624, 0, 1)
@@ -98,6 +101,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 76.0
+offset_right = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.461028, 1, 0.429352, 1)
@@ -105,6 +110,15 @@ theme_override_font_sizes/font_size = 40
 text = "Leaves"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="topbar/leaves"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 77.0
+offset_bottom = 73.0
+texture = ExtResource("2_tbgi4")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -122,6 +136,12 @@ theme_override_constants/separation = 10
 [node name="leafbar" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="vbox/leafbar"]
+modulate = Color(0.756863, 1, 0.760784, 1)
+layout_mode = 2
+texture = ExtResource("2_tbgi4")
+expand_mode = 2
+
 [node name="ProgressBar" type="ProgressBar" parent="vbox/leafbar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -130,10 +150,16 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_tefeu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_o6xl0")
 max_value = 300.0
-value = 50.0
+value = 9.0
 
 [node name="happiness" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="vbox/happiness"]
+modulate = Color(1, 0.717647, 0.196078, 1)
+layout_mode = 2
+texture = ExtResource("3_tefeu")
+expand_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="vbox/happiness"]
 custom_minimum_size = Vector2(90, 0)
@@ -147,6 +173,12 @@ value = 50.0
 
 [node name="Rest" type="HBoxContainer" parent="vbox"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="vbox/Rest"]
+modulate = Color(0.309804, 0.713726, 1, 1)
+layout_mode = 2
+texture = ExtResource("4_o6xl0")
+expand_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="vbox/Rest"]
 layout_mode = 2
@@ -217,12 +249,11 @@ text = "Go to Shop
 "
 
 [node name="leaf guy" type="Sprite2D" parent="."]
-position = Vector2(406, 300)
-scale = Vector2(2.3125, 2.3125)
-texture = ExtResource("1_o5qli")
+position = Vector2(398, 279)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_tipki")
 
 [node name="shop" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,27 +268,99 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.294118, 0.294118, 0.294118, 0.513726)
+color = Color(0.180005, 0.180005, 0.180005, 0.717647)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="shop"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="shop/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "shop"
+theme_override_font_sizes/font_size = 60
+text = "Shop"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Buy" type="Button" parent="shop/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 36
+
+[node name="Control5" type="Control" parent="shop/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Button" parent="shop/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 90
+text = "<"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="shop/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Buy" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Buy sigma"
+
+[node name="Buy2" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy sigma"
+
+[node name="Buy3" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy sigma"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Buy" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy sigma"
+
+[node name="Buy2" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy sigma"
+
+[node name="Buy3" type="Button" parent="shop/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy sigma"
+
+[node name="Control2" type="Button" parent="shop/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 90
+text = ">"
+
+[node name="Control4" type="Control" parent="shop/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="Leave" type="Button" parent="shop/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Leave Shop"
 
 [node name="shed" type="Control" parent="."]
@@ -276,6 +379,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.189007, 0.0977894, 4.81308e-08, 1)
+
+[node name="Panel" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 349.0
+offset_right = 820.0
+offset_bottom = 539.0
 
 [node name="Update" type="Timer" parent="."]
 autostart = true

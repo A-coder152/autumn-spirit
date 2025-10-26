@@ -22,8 +22,10 @@ var rest_outside_drain_per_minute = 100. / 480.
 var rest_shed_gain_per_minute = 100. / 360.
 var rest_nothappy_drain_per_minute = 100. / 480.
 
-var items = []
-var item_unlocks = []
+var items = [
+	preload("uid://hvpwabcna2fs")
+]
+var item_unlocks = [false]
 
 var last_update
 var loneliness_time = 480

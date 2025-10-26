@@ -7,7 +7,7 @@ extends Control
 @onready var shop_btn = $bottombar/shop
 @onready var status_label = $status
 @onready var shop_window = $shop
-@onready var buy_bell_btn = $shop/VBoxContainer/Buy
+#@onready var buy_bell_btn = $shop/VBoxContainer/Buy
 @onready var close_shop_btn = $shop/VBoxContainer/Leave
 @onready var uncollected_bar = $vbox/leafbar/ProgressBar
 @onready var rest_bar = $vbox/Rest/ProgressBar
@@ -18,7 +18,7 @@ func _ready() -> void:
 	collect_btn.pressed.connect(_on_collect_pressed)
 	feed_btn.pressed.connect(_on_feed_pressed)
 	shop_btn.pressed.connect(_on_shop_pressed)
-	buy_bell_btn.pressed.connect(_on_buy_bell_pressed)
+	#buy_bell_btn.pressed.connect(_on_buy_bell_pressed)
 	close_shop_btn.pressed.connect(hide_shop)
 	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
 
