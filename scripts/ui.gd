@@ -1,5 +1,7 @@
 extends Control
 
+@onready var stats = $vbox
+@onready var sprite = $"leaf guy"
 @onready var leaves_label = $topbar/leaves/Label
 @onready var collect_btn = $vbox/actions/collect
 @onready var happiness_bar = $vbox/happiness/ProgressBar
@@ -10,8 +12,6 @@ extends Control
 @onready var close_shop_btn = $shop/VBoxContainer/leave
 @onready var uncollected_bar = $vbox/leafbar/ProgressBar
 @onready var rest_bar = $vbox/Rest/ProgressBar
-@onready var shop_left_btn = $shop/VBoxContainer/actual/left
-@onready var shop_right_btn = $shop/VBoxContainer/actual/right
 @onready var shop_buy_btn_list: Array[Button] = [
 	$shop/VBoxContainer/actual/items/HBoxContainer/Buy, 
 	$shop/VBoxContainer/actual/items/HBoxContainer/Buy2,
@@ -20,6 +20,7 @@ extends Control
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy2,
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy3
 ]
+@onready var shed = $shed
 
 var shop_view_idx = 0
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	close_shop_btn.pressed.connect(hide_shop)
 	for i in len(shop_buy_btn_list):
 		shop_buy_btn_list[i].pressed.connect(func(): _on_buy(i))
+	if GameManager.environment == "shed": _on_shed_pressed()
 	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
 
 func _on_stats_changed(leaves:int, uncollected:int, happiness:float, rest) -> void:
@@ -68,7 +70,12 @@ func _on_generate_timeout() -> void:
 	GameManager.update_stuff()
 
 func _on_shed_pressed() -> void:
-	GameManager.environment = "shed" if GameManager.environment == "outside" else "outside"
+	sprite.position = Vector2(550, 450)
+	sprite.scale = Vector2(0.25, 0.25)
+	stats.position = Vector2(900, 50)
+	stats.scale = Vector2(0.8, 0.8)
+	shed.show()
+	GameManager.environment = "shed"
 	GameManager._save()
 
 func refresh_shop_items() -> void:
@@ -87,4 +94,12 @@ func _on_right_pressed() -> void:
 func _on_left_pressed() -> void:
 	shop_view_idx = max(0, shop_view_idx - 1)
 	refresh_shop_items()
-	
+
+func _on_leave_pressed() -> void:
+	sprite.position = Vector2(400, 280)
+	sprite.scale = Vector2(0.35, 0.35)
+	stats.position = Vector2(592, 160)
+	stats.scale = Vector2(1, 1)
+	shed.hide()
+	GameManager.environment = "outside"
+	GameManager._save()

@@ -114,6 +114,12 @@ func buy_upgrade(num) -> void:
 		return
 	leaves -= item.cost
 	item_unlocks[num] = true
+	apply_item_effect(item)
+	_save()
+	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
+	_notify_status("Bought upgrade")
+
+func apply_item_effect(item):
 	match item.effect:
 		item.effects.LEAVES_GAIN:
 			max_leaves_per_minute *= item.impact
@@ -135,9 +141,6 @@ func buy_upgrade(num) -> void:
 			rest_nothappy_drain_per_minute *= item.impact
 		item.effects.LONELINESS_TIME:
 			loneliness_time *= item.impact
-	_save()
-	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
-	_notify_status("Bought upgrade")
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:

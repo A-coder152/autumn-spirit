@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=17 format=3 uid="uid://b31gw4wegrc68"]
 
 [ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://b1igc4sflqocm" path="res://images/outside.png" id="2_tefeu"]
 [ext_resource type="Texture2D" uid="uid://d4bm6g7s3t61w" path="res://images/happiness.png" id="3_tefeu"]
 [ext_resource type="Texture2D" uid="uid://wvbatnnwh2nm" path="res://images/pillow.png" id="4_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://bl238qnj4wfa8" path="res://images/fallthing.png" id="5_tipki"]
+[ext_resource type="Texture2D" uid="uid://6bg4vra5p0p5" path="res://images/shed.png" id="7_o6xl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.69624, 0, 1)
@@ -13,6 +15,13 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+bg_color = Color(0, 0, 0, 0.658824)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.168067, 1, 0.317253, 1)
@@ -77,7 +86,22 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_0wfyh")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -376.0
+offset_right = 72.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tefeu")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(1152, 648)
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -119,6 +143,115 @@ offset_bottom = 73.0
 texture = ExtResource("2_tbgi4")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="status" type="Label" parent="."]
+layout_mode = 2
+offset_left = 269.0
+offset_top = 517.0
+offset_right = 879.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(0.371419, 0.36183, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Status"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bottombar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 0
+offset_top = 600.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="shed" type="Button" parent="bottombar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shed"
+
+[node name="shop" type="Button" parent="bottombar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Go to Shop
+"
+
+[node name="shed" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="shed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.189007, 0.0977894, 4.81308e-08, 1)
+
+[node name="TextureRect" type="TextureRect" parent="shed"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -34.0
+offset_right = 1162.0
+offset_bottom = 859.0
+texture = ExtResource("7_o6xl0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Mat" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 507.0
+offset_right = 816.0
+offset_bottom = 628.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_choun")
+
+[node name="leave" type="Button" parent="shed"]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 580.0
+offset_right = 1093.0
+offset_bottom = 643.0
+theme_override_font_sizes/font_size = 40
+text = "Leave Shed"
+
+[node name="Bed" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 342.0
+offset_right = 205.0
+offset_bottom = 634.0
+
+[node name="Couch" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 301.0
+offset_right = 821.0
+offset_bottom = 489.0
+
+[node name="Deco1" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 158.0
+offset_right = 164.0
+offset_bottom = 270.0
+
+[node name="Deco2" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 142.0
+offset_right = 768.0
+offset_bottom = 259.0
+
+[node name="Deco3" type="Panel" parent="shed"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 142.0
+offset_right = 480.0
+offset_bottom = 261.0
 
 [node name="vbox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -218,38 +351,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
 text = "Feed"
 
-[node name="status" type="Label" parent="."]
-layout_mode = 2
-offset_left = 269.0
-offset_top = 517.0
-offset_right = 879.0
-offset_bottom = 568.0
-theme_override_colors/font_color = Color(0.371419, 0.36183, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "Status"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="bottombar" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(1152, 0)
-layout_mode = 0
-offset_top = 600.0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="shed" type="Button" parent="bottombar"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Shed"
-
-[node name="shop" type="Button" parent="bottombar"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Go to Shop
-"
-
 [node name="leaf guy" type="Sprite2D" parent="."]
-position = Vector2(398, 279)
+position = Vector2(400, 280)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("5_tipki")
 
@@ -565,30 +668,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Leave Shop"
 
-[node name="shed" type="Control" parent="."]
-visible = false
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 2
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="shed"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.189007, 0.0977894, 4.81308e-08, 1)
-
-[node name="Panel" type="Panel" parent="shed"]
-layout_mode = 0
-offset_left = 349.0
-offset_top = 349.0
-offset_right = 820.0
-offset_bottom = 539.0
-
 [node name="Update" type="Timer" parent="."]
 autostart = true
 
@@ -597,6 +676,7 @@ wait_time = 15.0
 autostart = true
 
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
+[connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
 [connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
