@@ -52,7 +52,6 @@ func _on_autosave_timeout() -> void:
 func _on_generate_timeout() -> void:
 	GameManager.update_stuff()
 
-
 func _on_shed_pressed() -> void:
 	GameManager.environment = "shed" if GameManager.environment == "outside" else "outside"
 	GameManager._save()

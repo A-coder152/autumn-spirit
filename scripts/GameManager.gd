@@ -22,8 +22,8 @@ var rest_outside_drain_per_minute = 100. / 480.
 var rest_shed_gain_per_minute = 100. / 360.
 var rest_nothappy_drain_per_minute = 100. / 480.
 
-var upgrade_unlocks = [false]
-var upgrade_costs = [50]
+var items = []
+var item_unlocks = []
 
 var last_update
 var loneliness_time = 480
@@ -40,12 +40,20 @@ func _load_or_init() -> void:
 	leaves = (data.get("leaves", 0))
 	uncollected_leaves = (data.get("uncollected_leaves", 0))
 	happiness = (data.get("happiness", 80.0))
-	upgrade_unlocks = (data.get("upgrade_unlocks", [false]))
+	item_unlocks = (data.get("item_unlocks", []))
 	away_drain_per_minute = (data.get("away_drain_per_minute", 2.0))
 	max_leaves_per_minute = (data.get("max_leaves_per_minute", 10.0))
 	last_update = data.get("last_update", Time.get_unix_time_from_system())
 	environment = data.get("environment", "outside")
+	max_uncollected_leaves = data.get("max_uncollected_leaves", max_uncollected_leaves)
+	max_happiness = data.get("max_happiness", max_happiness)
+	happiness_rest_per_minute = data.get("happiness_rest_per_minute", happiness_rest_per_minute)
+	max_rest = data.get("max_rest", max_rest)
 	rest = data.get("rest", 80.0)
+	rest_outside_drain_per_minute = data.get("rest_outside_drain_per_minute", rest_outside_drain_per_minute)
+	rest_shed_gain_per_minute = data.get("rest_shed_gain_per_minute", rest_shed_gain_per_minute)
+	rest_nothappy_drain_per_minute = data.get("rest_nothappy_drain_per_minute", rest_nothappy_drain_per_minute)
+	loneliness_time = data.get("loneliness_time", loneliness_time)
 	_notify_status("Welcome back")
 
 func _save() -> void:
@@ -53,12 +61,20 @@ func _save() -> void:
 		"leaves": leaves,
 		"uncollected_leaves": uncollected_leaves,
 		"happiness": happiness,
-		"upgrade_unlocks": upgrade_unlocks,
+		"item_unlocks": item_unlocks,
 		"away_drain_per_minute": away_drain_per_minute,
 		"max_leaves_per_minute": max_leaves_per_minute,
 		"last_update": last_update,
 		"rest": rest,
-		"environment": environment
+		"environment": environment,
+		"max_uncollected_leaves": max_uncollected_leaves,
+		"max_happiness": max_happiness,
+		"happiness_rest_per_minute": happiness_rest_per_minute,
+		"max_rest": max_rest,
+		"rest_outside_drain_per_minute": rest_outside_drain_per_minute,
+		"rest_shed_gain_per_minute": rest_shed_gain_per_minute,
+		"rest_nothappy_drain_per_minute": rest_nothappy_drain_per_minute,
+		"loneliness_time": loneliness_time
 	}
 	Save.save_game(data)
 
@@ -82,16 +98,37 @@ func boost_happiness(amount: float = 10.0) -> void:
 		_notify_status("Happiness increased by (+%d)" % int(amount))
 
 func buy_upgrade(num) -> void:
-	if upgrade_unlocks[num]:
+	var item: Item = items[num]
+	if item_unlocks[num]:
 		_notify_status("Already unlocked")
 		return
-	var cost = upgrade_costs[num]
-	if leaves < cost:
-		_notify_status("Not enough leaves. Need %d." % cost)
+	if leaves < item.cost:
+		_notify_status("Not enough leaves. Need %d." % item.cost)
 		return
-	leaves -= cost
-	upgrade_unlocks[num] = true
-	if num == 0: away_drain_per_minute *= 0.9
+	leaves -= item.cost
+	item_unlocks[num] = true
+	match item.effect:
+		item.effects.LEAVES_GAIN:
+			max_leaves_per_minute *= item.impact
+		item.effects.LEAVES_MAX:
+			max_uncollected_leaves *= item.impact
+		item.effects.HAPPINESS_MAX:
+			max_happiness *= item.impact
+		item.effects.HAPPINESS_DRAIN:
+			away_drain_per_minute *= item.impact
+		item.effects.HAPPINESS_REST:
+			happiness_rest_per_minute *= item.impact
+		item.effects.REST_MAX:
+			max_rest *= item.impact
+		item.effects.REST_DRAIN:
+			rest_outside_drain_per_minute *= item.impact
+		item.effects.REST_GAIN:
+			rest_shed_gain_per_minute *= item.impact
+		item.effects.REST_UNHAPPY:
+			rest_nothappy_drain_per_minute *= item.impact
+		item.effects.LONELINESS_TIME:
+			loneliness_time *= item.impact
+	_save()
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
 	_notify_status("Bought upgrade")
 
@@ -111,7 +148,7 @@ func update_stuff() -> void:
 	if environment == "outside":
 		leaf_collection_progress += max_leaves_per_minute * normal_mins * (happiness / max_happiness)
 		if leaf_collection_progress > 1:
-			uncollected_leaves += leaf_collection_progress / 1
+			uncollected_leaves = min(max_uncollected_leaves, uncollected_leaves + leaf_collection_progress / 1)
 			leaf_collection_progress -= leaf_collection_progress / 1
 		rest = max(0, rest - rest_outside_drain_per_minute * normal_mins)
 		if mins_over_loneliness > 0:
@@ -119,7 +156,7 @@ func update_stuff() -> void:
 			happiness = max(0, happiness - away_drain_per_minute * mins_over_loneliness)
 			leaf_collection_progress += max_leaves_per_minute * normal_mins * ((happiness + old_happiness) / 2. / max_happiness)
 			if leaf_collection_progress > 1:
-				uncollected_leaves += leaf_collection_progress / 1
+				uncollected_leaves = min(max_uncollected_leaves, uncollected_leaves + leaf_collection_progress / 1)
 				leaf_collection_progress -= leaf_collection_progress / 1
 	else:
 		happiness = min(happiness + happiness_rest_per_minute * normal_mins, 100)
