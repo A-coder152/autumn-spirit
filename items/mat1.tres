@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://hvpwabcna2fs"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://hvpwabcna2fs"]
 
 [ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="1_1q6pp"]
+[ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="1_66ogn"]
 
 [resource]
 script = ExtResource("1_1q6pp")
 item_name = "Green mat"
 desc = "A comfortable mat that boosts rest gain by 10%."
+image = ExtResource("1_66ogn")
+modulate = Color(0, 1, 0, 1)
 cost = 50
 type = 0
 effect = 7

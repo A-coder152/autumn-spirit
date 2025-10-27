@@ -86,6 +86,7 @@ func refresh_shop_items() -> void:
 		button.get_child(1).get_child(1).text = str(item.cost) if not GameManager.item_unlocks[idx] else "Bought"
 		button.tooltip_text = item.desc
 		button.get_child(2).texture = item.image
+		button.get_child(2).self_modulate = item.modulate
 
 func _on_right_pressed() -> void:
 	shop_view_idx = shop_view_idx + 1 if len(GameManager.items) > (shop_view_idx + 2) * 6 else shop_view_idx

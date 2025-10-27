@@ -15,6 +15,7 @@ enum types {
 @export var item_name: String
 @export var desc: String
 @export var image: Texture2D
+@export var modulate: Color
 @export var cost: int
 @export var type: types
 @export var effect: effects
