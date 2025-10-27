@@ -8,8 +8,7 @@ enum effects {
 }
 
 enum types {
-	MAT, COUCH, DECOR, PAINT, IDK,
-	HEAD, ARM, LEG
+	MAT, COUCH, BED, CLOCK, FRAME, MIRROR
 }
 
 @export var item_name: String

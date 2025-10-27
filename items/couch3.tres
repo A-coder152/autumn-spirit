@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://tg8dqqw64o11"]
+
+[ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="1_186y3"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_5vcc3"]
+
+[resource]
+script = ExtResource("2_5vcc3")
+item_name = "Light Blue Couch"
+desc = "Resting on this is a little more joyful. +20% happiness when resting."
+image = ExtResource("1_186y3")
+modulate = Color(0, 0.419608, 1, 1)
+cost = 100
+type = 1
+effect = 4
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

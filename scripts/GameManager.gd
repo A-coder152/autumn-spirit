@@ -23,14 +23,23 @@ var rest_shed_gain_per_minute = 100. / 360.
 var rest_nothappy_drain_per_minute = 100. / 480.
 
 var items = [
-	preload("uid://hvpwabcna2fs"),
-	preload("uid://clesv63w70jin"), # below here is test
-	preload("uid://cvephtx8fnhhq"),
-	preload("uid://cho36407sfo2m"),
-	preload("uid://xdeoy4ff1yub"),
-	preload("uid://dergrj8ka1o1n")
+	preload("res://items/mat1.tres"),
+	preload("res://items/couch1.tres"),
+	preload("res://items/couch2.tres"),
+	preload("res://items/mat2.tres"),
+	preload("res://items/couch3.tres"),
+	preload("res://items/mat3.tres"),
+	preload("res://items/mat4.tres"),
+	preload("res://items/couch4.tres"),
+	preload("res://items/mat5.tres"),
+	preload("res://items/couch5.tres"),
+	preload("res://items/mat6.tres"),
+	preload("res://items/couch6.tres")
 ]
-var item_unlocks = [false, false, false, false, false, false]
+var item_unlocks = [
+	false, false, false, false, false, false,
+	false, false, false, false, false, false
+]
 
 var last_update
 var loneliness_time = 480
@@ -96,6 +105,7 @@ func collect_leaves() -> void:
 	uncollected_leaves = 0
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
 	_notify_status("Leaves collected")
+	_save()
 
 func boost_happiness(amount: float = 10.0) -> void:
 	var before = happiness

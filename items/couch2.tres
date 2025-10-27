@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dryyav4bjklpq"]
+
+[ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="1_drut1"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_xvbms"]
+
+[resource]
+script = ExtResource("2_xvbms")
+item_name = "Green Couch"
+desc = "One with nature. +5% leaf collection speed"
+image = ExtResource("1_drut1")
+modulate = Color(0, 0.964706, 0, 1)
+cost = 75
+type = 1
+effect = 0
+impact = 1.05
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

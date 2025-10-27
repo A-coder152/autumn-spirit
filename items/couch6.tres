@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cpopmwcii74xa"]
+
+[ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="1_pn6ni"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_25n2b"]
+
+[resource]
+script = ExtResource("2_25n2b")
+item_name = "Cyan Couch"
+desc = "Perhaps too comfortable. +25% Max rest."
+image = ExtResource("1_pn6ni")
+modulate = Color(0, 1, 1, 1)
+cost = 300
+type = 1
+effect = 5
+impact = 1.25
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

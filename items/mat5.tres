@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://xdeoy4ff1yub"]
+
+[ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="1_uiyi3"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_xt6yf"]
+
+[resource]
+script = ExtResource("2_xt6yf")
+item_name = "Magenta mat"
+desc = "So pretty and even comfier! +30% faster resting"
+image = ExtResource("1_uiyi3")
+modulate = Color(1, 0, 1, 1)
+cost = 200
+type = 0
+effect = 7
+impact = 1.3
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dx4p2lqvf1mdx"]
+
+[ext_resource type="Texture2D" uid="uid://buy3mh4vqnfw1" path="res://images/couch.png" id="1_rwdyf"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_4e6t1"]
+
+[resource]
+script = ExtResource("2_4e6t1")
+item_name = "Wine Couch"
+desc = "Very bouncy. 10% less happiness drain while away."
+image = ExtResource("1_rwdyf")
+modulate = Color(0.784314, 0, 1, 1)
+cost = 150
+type = 1
+effect = 3
+impact = 0.9
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

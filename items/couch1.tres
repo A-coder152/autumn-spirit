@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dlb233n1atb0w"]
+
+[ext_resource type="Texture2D" uid="uid://buy3mh4vqnfw1" path="res://images/couch.png" id="1_usdve"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_wn382"]
+
+[resource]
+script = ExtResource("2_wn382")
+item_name = "Red Couch"
+desc = "A lovely color. Reduces restlessness by 5%"
+image = ExtResource("1_usdve")
+modulate = Color(1, 0, 0, 1)
+cost = 50
+type = 1
+effect = 8
+impact = 0.95
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

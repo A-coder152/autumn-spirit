@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://clesv63w70jin"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://clesv63w70jin"]
 
+[ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="1_q1hnx"]
 [ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="1_sfv56"]
 
 [resource]
 script = ExtResource("1_sfv56")
 item_name = "Red mat"
 desc = "A reminder of the outside. Boosts happiness gain when resting by 20%."
-cost = 75
+image = ExtResource("1_q1hnx")
+modulate = Color(1, 0.235294, 0.235294, 1)
+cost = 100
 type = 0
 effect = 4
 impact = 1.2

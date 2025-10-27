@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dergrj8ka1o1n"]
+
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="1_0em3y"]
+[ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="1_os5tr"]
+
+[resource]
+script = ExtResource("1_0em3y")
+item_name = "Premium mat"
+desc = "Just looking at this mat makes anyone happy. +50% Happiness gain in rest."
+image = ExtResource("1_os5tr")
+modulate = Color(1, 1, 0.392157, 1)
+cost = 300
+type = 0
+effect = 4
+impact = 1.5
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

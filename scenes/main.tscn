@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b1igc4sflqocm" path="res://images/outside.png" id="2_tefeu"]
 [ext_resource type="Texture2D" uid="uid://d4bm6g7s3t61w" path="res://images/happiness.png" id="3_tefeu"]
 [ext_resource type="Texture2D" uid="uid://wvbatnnwh2nm" path="res://images/pillow.png" id="4_o6xl0"]
-[ext_resource type="Texture2D" uid="uid://buy3mh4vqnfw1" path="res://images/couch.png" id="5_85g3d"]
 [ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="5_choun"]
 [ext_resource type="Texture2D" uid="uid://bl238qnj4wfa8" path="res://images/fallthing.png" id="5_tipki"]
+[ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="6_trceg"]
 [ext_resource type="Texture2D" uid="uid://6bg4vra5p0p5" path="res://images/shed.png" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="7_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="8_eb6dy"]
@@ -174,6 +174,7 @@ text = "Go to Shop
 "
 
 [node name="shed" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 2
 anchors_preset = 0
@@ -222,11 +223,11 @@ stretch_mode = 0
 [node name="couch" type="TextureButton" parent="shed"]
 self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
 layout_mode = 0
-offset_left = 244.0
+offset_left = 243.0
 offset_top = 218.0
-offset_right = 945.0
+offset_right = 944.0
 offset_bottom = 606.0
-texture_normal = ExtResource("5_85g3d")
+texture_normal = ExtResource("6_trceg")
 ignore_texture_size = true
 stretch_mode = 4
 

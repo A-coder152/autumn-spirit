@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://crt3sbgrtmhqv"]
+
+[ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="1_5bhgm"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_b8mre"]
+
+[resource]
+script = ExtResource("2_b8mre")
+item_name = "Dark Blue Couch"
+desc = "No more feeling blue! +15% max happiness"
+image = ExtResource("1_5bhgm")
+modulate = Color(0, 0, 0.772549, 1)
+cost = 250
+type = 1
+effect = 2
+impact = 1.15
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

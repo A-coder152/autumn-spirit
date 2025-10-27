@@ -89,7 +89,7 @@ func refresh_shop_items() -> void:
 		button.get_child(2).self_modulate = item.modulate
 
 func _on_right_pressed() -> void:
-	shop_view_idx = shop_view_idx + 1 if len(GameManager.items) > (shop_view_idx + 2) * 6 else shop_view_idx
+	shop_view_idx = shop_view_idx + 1 if len(GameManager.items) >= (shop_view_idx + 2) * 6 else shop_view_idx
 	refresh_shop_items()
 
 func _on_left_pressed() -> void:
