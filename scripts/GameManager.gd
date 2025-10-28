@@ -42,7 +42,7 @@ var item_unlocks = [
 ]
 var equipped_items = [null, null, null, null, null, null]
 
-var last_update = Time.get_unix_time_from_system()
+var last_update
 var loneliness_time = 480
 
 func _ready() -> void:
@@ -52,6 +52,7 @@ func _ready() -> void:
 func _load_or_init() -> void:
 	var data = Save.load_game()
 	if data.is_empty():
+		last_update = Time.get_unix_time_from_system()
 		_notify_status("Welcome")
 		return
 	leaves = (data.get("leaves", 0))
@@ -188,6 +189,7 @@ func _notify_status(msg) -> void:
 
 func update_stuff() -> void:
 	var now = Time.get_unix_time_from_system()
+	if not last_update: last_update = now - 1
 	var delta_mins = (now - last_update) / 60.
 	var normal_mins = min(delta_mins, loneliness_time)
 	var mins_over_loneliness = min(delta_mins - loneliness_time, loneliness_time)
