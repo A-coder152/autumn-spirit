@@ -21,8 +21,40 @@ extends Control
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy3
 ]
 @onready var shed = $shed
+@onready var shed_btn_list: Array[TextureButton] = [
+	$shed/carpet,
+	$shed/couch,
+	$shed/bed,
+	$shed/clock,
+	$shed/frame,
+	$shed/mirror
+]
+@onready var shedboi_btn_list = [
+	$shedboi/VBoxContainer/Button,
+	$shedboi/VBoxContainer/Button2,
+	$shedboi/VBoxContainer/Button3,
+	$shedboi/VBoxContainer/Button4,
+	$shedboi/VBoxContainer/Button5,
+	$shedboi/VBoxContainer/Button6
+]
+@onready var shedboi = $shedboi
 
 var shop_view_idx = 0
+var shedboi_positions = [
+	Vector2(820, 380),
+	Vector2(820, 300),
+	Vector2(250, 270),
+	Vector2(200, 110),
+	Vector2(500, 110),
+	Vector2(300, 100)
+]
+var shedboi_descs = [
+	"leaves gained", "max leaves",
+	"max happiness", "away happiness drain", "rest happiness",
+	"max rest", "outside rest drain", "rest gain", "away rest drain",
+	"time before loneliness"
+]
+var shedboi_num = -1
 
 func _ready() -> void:
 	GameManager.stats_changed.connect(_on_stats_changed)
@@ -33,6 +65,10 @@ func _ready() -> void:
 	close_shop_btn.pressed.connect(hide_shop)
 	for i in len(shop_buy_btn_list):
 		shop_buy_btn_list[i].pressed.connect(func(): _on_buy(i))
+	for i in len(shed_btn_list):
+		shed_btn_list[i].pressed.connect(func(): run_the_shedboi(i))
+	for btn in shedboi_btn_list:
+		btn.pressed.connect(func(): change_equipped(btn))
 	if GameManager.environment == "shed": _on_shed_pressed()
 	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
 
@@ -74,6 +110,7 @@ func _on_shed_pressed() -> void:
 	sprite.scale = Vector2(0.25, 0.25)
 	stats.position = Vector2(900, 50)
 	stats.scale = Vector2(0.8, 0.8)
+	load_shed()
 	shed.show()
 	GameManager.environment = "shed"
 	GameManager._save()
@@ -102,5 +139,56 @@ func _on_leave_pressed() -> void:
 	stats.position = Vector2(592, 160)
 	stats.scale = Vector2(1, 1)
 	shed.hide()
+	shedboi.hide()
 	GameManager.environment = "outside"
 	GameManager._save()
+
+func run_the_shedboi(num) -> void:
+	if shedboi_num == num:
+		shedboi_num = -1
+		shedboi.hide()
+		return
+	shedboi_num = num
+	for child in shedboi.get_child(0).get_children():
+		child.hide()
+	shedboi.position = shedboi_positions[num]
+	shedboi.show()
+	var valid_items = []
+	for i in len(GameManager.items):
+		if GameManager.item_unlocks[i] and GameManager.items[i].type == num:
+			valid_items.append(GameManager.items[i])
+	if len(valid_items) == 0:
+		shedboi.get_child(0).get_child(6).show()
+		return
+	for i in len(valid_items):
+		var button = shedboi.get_child(0).get_child(i)
+		var item = valid_items[i]
+		var desc = str(int(item.impact * 100 - 100)) + "% " + shedboi_descs[item.effect]
+		button.get_node("HBoxContainer/TextureRect").texture = item.image
+		button.get_node("HBoxContainer/TextureRect").modulate = item.modulate
+		button.get_node("HBoxContainer/VBoxContainer/Label").text = item.item_name
+		button.get_node("HBoxContainer/VBoxContainer/Label2").text = desc
+		button.show()
+
+func change_equipped(button):
+	if GameManager.equipped_items[shedboi_num]:
+		GameManager.undo_item_effect(GameManager.equipped_items[shedboi_num])
+	var thingo = shed_btn_list[shedboi_num]
+	for item: Item in GameManager.items:
+		if item.item_name == button.get_node("HBoxContainer/VBoxContainer/Label").text:
+			thingo.texture_normal = item.image
+			thingo.self_modulate = item.modulate
+			GameManager.apply_item_effect(item)
+			GameManager.equipped_items[shedboi_num] = item.resource_path
+	shedboi.hide()
+	shedboi_num = -1
+	GameManager._save()
+
+func load_shed():
+	for i in len(GameManager.equipped_items):
+		var item = GameManager.equipped_items[i]
+		if not item: continue
+		item = load(item)
+		var thingo = shed_btn_list[i]
+		thingo.texture_normal = item.image
+		thingo.self_modulate = item.modulate

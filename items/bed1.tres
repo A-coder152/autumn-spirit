@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://4t0q048mbyr3"]
+
+[ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="1_epjsl"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_58pwy"]
+
+[resource]
+script = ExtResource("2_58pwy")
+item_name = "Red Bed"
+desc = "A lovely color. Reduces restlessness by 5%"
+image = ExtResource("1_epjsl")
+modulate = Color(1, 0.278431, 0, 1)
+cost = 50
+type = 1
+effect = 8
+impact = 0.95
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

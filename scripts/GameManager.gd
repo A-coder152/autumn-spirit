@@ -40,6 +40,7 @@ var item_unlocks = [
 	false, false, false, false, false, false,
 	false, false, false, false, false, false
 ]
+var equipped_items = [null, null, null, null, null, null]
 
 var last_update
 var loneliness_time = 480
@@ -70,6 +71,7 @@ func _load_or_init() -> void:
 	rest_shed_gain_per_minute = data.get("rest_shed_gain_per_minute", rest_shed_gain_per_minute)
 	rest_nothappy_drain_per_minute = data.get("rest_nothappy_drain_per_minute", rest_nothappy_drain_per_minute)
 	loneliness_time = data.get("loneliness_time", loneliness_time)
+	equipped_items = data.get("equipped_items", equipped_items)
 	_notify_status("Welcome back")
 
 func _save() -> void:
@@ -90,7 +92,8 @@ func _save() -> void:
 		"rest_outside_drain_per_minute": rest_outside_drain_per_minute,
 		"rest_shed_gain_per_minute": rest_shed_gain_per_minute,
 		"rest_nothappy_drain_per_minute": rest_nothappy_drain_per_minute,
-		"loneliness_time": loneliness_time
+		"loneliness_time": loneliness_time,
+		"equipped_items": equipped_items
 	}
 	Save.save_game(data)
 
@@ -124,7 +127,7 @@ func buy_upgrade(num) -> void:
 		return
 	leaves -= item.cost
 	item_unlocks[num] = true
-	apply_item_effect(item)
+	#apply_item_effect(item)
 	_save()
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
 	_notify_status("Bought upgrade")
@@ -151,6 +154,30 @@ func apply_item_effect(item):
 			rest_nothappy_drain_per_minute *= item.impact
 		item.effects.LONELINESS_TIME:
 			loneliness_time *= item.impact
+
+func undo_item_effect(item):
+	if item is String: item = load(item)
+	match item.effect:
+		item.effects.LEAVES_GAIN:
+			max_leaves_per_minute /= item.impact
+		item.effects.LEAVES_MAX:
+			max_uncollected_leaves /= item.impact
+		item.effects.HAPPINESS_MAX:
+			max_happiness /= item.impact
+		item.effects.HAPPINESS_DRAIN:
+			away_drain_per_minute /= item.impact
+		item.effects.HAPPINESS_REST:
+			happiness_rest_per_minute /= item.impact
+		item.effects.REST_MAX:
+			max_rest /= item.impact
+		item.effects.REST_DRAIN:
+			rest_outside_drain_per_minute /= item.impact
+		item.effects.REST_GAIN:
+			rest_shed_gain_per_minute /= item.impact
+		item.effects.REST_UNHAPPY:
+			rest_nothappy_drain_per_minute /= item.impact
+		item.effects.LONELINESS_TIME:
+			loneliness_time /= item.impact
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
