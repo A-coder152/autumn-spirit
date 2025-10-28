@@ -102,6 +102,7 @@ stretch_mode = 4
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 custom_minimum_size = Vector2(1152, 648)
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(1, 1, 0.721569, 1)
@@ -174,6 +175,7 @@ text = "Go to Shop
 "
 
 [node name="shed" type="Control" parent="."]
+visible = false
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 2
 anchors_preset = 0
@@ -739,6 +741,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy2"]
+layout_mode = 0
 offset_right = 282.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
@@ -747,6 +750,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy2"]
+layout_mode = 0
 offset_top = 154.0
 offset_right = 280.0
 offset_bottom = 208.0
@@ -766,6 +770,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy2"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
@@ -777,6 +782,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy3"]
+layout_mode = 0
 offset_right = 282.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
@@ -785,6 +791,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy3"]
+layout_mode = 0
 offset_top = 154.0
 offset_right = 280.0
 offset_bottom = 208.0
@@ -804,6 +811,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="shop/VBoxContainer/actual/items/HBoxContainer/Buy3"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
@@ -820,6 +828,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy"]
+layout_mode = 0
 offset_right = 282.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
@@ -828,6 +837,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy"]
+layout_mode = 0
 offset_top = 154.0
 offset_right = 280.0
 offset_bottom = 208.0
@@ -847,6 +857,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
@@ -858,6 +869,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy2"]
+layout_mode = 0
 offset_right = 282.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
@@ -866,6 +878,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy2"]
+layout_mode = 0
 offset_top = 154.0
 offset_right = 280.0
 offset_bottom = 208.0
@@ -885,6 +898,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy2"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
@@ -896,6 +910,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy3"]
+layout_mode = 0
 offset_right = 282.0
 offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
@@ -904,6 +919,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy3"]
+layout_mode = 0
 offset_top = 154.0
 offset_right = 280.0
 offset_bottom = 208.0
@@ -923,6 +939,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="shop/VBoxContainer/actual/items/HBoxContainer3/Buy3"]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0

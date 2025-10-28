@@ -42,7 +42,7 @@ var item_unlocks = [
 ]
 var equipped_items = [null, null, null, null, null, null]
 
-var last_update
+var last_update = Time.get_unix_time_from_system()
 var loneliness_time = 480
 
 func _ready() -> void:

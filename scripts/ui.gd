@@ -96,7 +96,7 @@ func hide_shop() -> void:
 	shop_window.hide()
 
 func _on_buy(num) -> void:
-	GameManager.buy_upgrade(num)
+	GameManager.buy_upgrade(num + shop_view_idx * 6)
 	refresh_shop_items()
 
 func _on_autosave_timeout() -> void:
