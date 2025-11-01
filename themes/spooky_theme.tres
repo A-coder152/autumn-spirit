@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="GameTheme" load_steps=6 format=3 uid="uid://dnv27tg1yifip"]
+
+[ext_resource type="Texture2D" uid="uid://c7fslnwa0ehpn" path="res://images/ghost.png" id="1_xymx7"]
+[ext_resource type="Texture2D" uid="uid://d2ahjj78sucgc" path="res://images/spooky_outside.png" id="2_4dd04"]
+[ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="3_jfkgj"]
+[ext_resource type="Script" uid="uid://baat7prhn42c0" path="res://themes/theme_resource.gd" id="4_pi13d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_63fnr"]
+load_path = "res://.godot/imported/spooky_shed.png-c77e717e3443349dbdc8cb20ff72b59d.ctex"
+
+[resource]
+script = ExtResource("4_pi13d")
+theme_name = "Spooky"
+main_char = ExtResource("1_xymx7")
+main_char_scale = Vector2(0.12, 0.12)
+outside_bg = ExtResource("2_4dd04")
+shed_bg = SubResource("CompressedTexture2D_63fnr")
+resource = ExtResource("3_jfkgj")
+light = Color(0.847474, 0.847474, 0.847474, 1)
+less_light = Color(0.738825, 0.73613, 0.740141, 1)
+normal = Color(0.635713, 0.632481, 0.637292, 1)
+heavy = Color(0.419813, 0.419813, 0.419813, 1)
+metadata/_custom_type_script = "uid://baat7prhn42c0"

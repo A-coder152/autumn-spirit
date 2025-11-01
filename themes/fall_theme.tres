@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="GameTheme" load_steps=6 format=3 uid="uid://up85hhrtyjv8"]
+
+[ext_resource type="Script" uid="uid://baat7prhn42c0" path="res://themes/theme_resource.gd" id="1_5ojs5"]
+[ext_resource type="Texture2D" uid="uid://bl238qnj4wfa8" path="res://images/fallthing.png" id="1_m6nno"]
+[ext_resource type="Texture2D" uid="uid://b1igc4sflqocm" path="res://images/outside.png" id="2_lay3u"]
+[ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="3_32sqm"]
+[ext_resource type="Texture2D" uid="uid://6bg4vra5p0p5" path="res://images/shed.png" id="5_4ljsd"]
+
+[resource]
+script = ExtResource("1_5ojs5")
+theme_name = "Fall"
+main_char = ExtResource("1_m6nno")
+main_char_scale = Vector2(0.35, 0.35)
+outside_bg = ExtResource("2_lay3u")
+shed_bg = ExtResource("5_4ljsd")
+resource = ExtResource("3_32sqm")
+light = Color(0.756863, 1, 0.760784, 1)
+less_light = Color(0.545098, 1, 0.568627, 1)
+normal = Color(0.168627, 1, 0.317647, 1)
+heavy = Color(0, 0.639216, 0.164706, 1)
+metadata/_custom_type_script = "uid://baat7prhn42c0"

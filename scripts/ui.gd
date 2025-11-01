@@ -107,7 +107,7 @@ func _on_generate_timeout() -> void:
 
 func _on_shed_pressed() -> void:
 	sprite.position = Vector2(550, 450)
-	sprite.scale = Vector2(0.25, 0.25)
+	sprite.scale *= 2./3
 	stats.position = Vector2(900, 50)
 	stats.scale = Vector2(0.8, 0.8)
 	load_shed()
@@ -135,7 +135,7 @@ func _on_left_pressed() -> void:
 
 func _on_leave_pressed() -> void:
 	sprite.position = Vector2(400, 280)
-	sprite.scale = Vector2(0.35, 0.35)
+	sprite.scale *= 3./2
 	stats.position = Vector2(592, 160)
 	stats.scale = Vector2(1, 1)
 	shed.hide()

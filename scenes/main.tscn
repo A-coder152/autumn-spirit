@@ -6,16 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://d4bm6g7s3t61w" path="res://images/happiness.png" id="3_tefeu"]
 [ext_resource type="Texture2D" uid="uid://wvbatnnwh2nm" path="res://images/pillow.png" id="4_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://itogmfddhsou" path="res://images/carpet.png" id="5_choun"]
-[ext_resource type="Texture2D" uid="uid://bl238qnj4wfa8" path="res://images/fallthing.png" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://5ntayy7dctrf" path="res://images/couch2.png" id="6_trceg"]
 [ext_resource type="Texture2D" uid="uid://6bg4vra5p0p5" path="res://images/shed.png" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="7_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="8_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="9_trceg"]
 [ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="10_trceg"]
+[ext_resource type="Texture2D" uid="uid://c7fslnwa0ehpn" path="res://images/ghost.png" id="13_trceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
-bg_color = Color(0, 0.69624, 0, 1)
+bg_color = Color(0, 0.639216, 0.164706, 1)
 border_color = Color(0, 0.41793, 0, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -99,14 +99,6 @@ texture = ExtResource("2_tefeu")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(1, 1, 0.721569, 1)
-
 [node name="topbar" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1152, 0)
 layout_mode = 0
@@ -129,7 +121,7 @@ offset_left = 76.0
 offset_right = -29.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.461028, 1, 0.429352, 1)
+theme_override_colors/font_color = Color(0.545098, 1, 0.568627, 1)
 theme_override_font_sizes/font_size = 40
 text = "Leaves"
 horizontal_alignment = 1
@@ -181,15 +173,6 @@ layout_mode = 2
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-
-[node name="ColorRect" type="ColorRect" parent="shed"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.189007, 0.0977894, 4.81308e-08, 1)
 
 [node name="bg" type="TextureRect" parent="shed"]
 layout_mode = 0
@@ -339,7 +322,6 @@ expand_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(9.14484e-07, 0.388402, 0.600409, 1)
-theme_override_colors/font_outline_color = Color(8.32662e-06, 0.254206, 0.620967, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sugp2")
@@ -357,16 +339,18 @@ theme_override_constants/separation = 12
 [node name="collect" type="Button" parent="vbox/actions"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_85g3d")
-text = "Collect Leaves
+text = "Collect 
 "
 
 [node name="feed" type="Button" parent="vbox/actions"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_85g3d")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_85g3d")
@@ -375,8 +359,8 @@ text = "Feed"
 
 [node name="leaf guy" type="Sprite2D" parent="."]
 position = Vector2(400, 280)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("5_tipki")
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("13_trceg")
 
 [node name="shedboi" type="ScrollContainer" parent="."]
 visible = false
