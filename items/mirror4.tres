@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cgbym8dlsa7pv"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_t1p3t"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_ep5yq"]
+
+[resource]
+script = ExtResource("2_ep5yq")
+item_name = "Green Mirror"
+desc = "For a productive day of collection. +20% Max leaves"
+image = ExtResource("1_t1p3t")
+modulate = Color(0, 1, 0, 1)
+cost = 225
+type = 5
+effect = 1
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bcjxrvbrodjld"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_e5ydb"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_eo6b7"]
+
+[resource]
+script = ExtResource("2_eo6b7")
+item_name = "Yellow Mirror"
+desc = "Be happy. +20% max happiness."
+image = ExtResource("1_e5ydb")
+modulate = Color(1, 1, 0, 1)
+cost = 350
+type = 5
+effect = 2
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

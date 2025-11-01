@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://6bg4vra5p0p5" path="res://images/shed.png" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="7_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="8_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://bqh8jwng3gntn" path="res://images/frame.png" id="9_trceg"]
+[ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="9_trceg"]
 [ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="10_trceg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
@@ -244,26 +244,16 @@ texture_normal = ExtResource("8_eb6dy")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="frame" type="TextureButton" parent="shed"]
-self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
+[node name="drawing" type="TextureButton" parent="shed"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 346.0
-offset_top = 128.0
-offset_right = 493.0
-offset_bottom = 275.0
+offset_left = 323.0
+offset_top = 148.0
+offset_right = 486.0
+offset_bottom = 280.0
 texture_normal = ExtResource("9_trceg")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="hi" type="TextureRect" parent="shed/frame"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 32.0
-offset_right = 112.0
-offset_bottom = 109.0
-texture = ExtResource("3_tefeu")
-expand_mode = 1
-stretch_mode = 4
 
 [node name="mirror" type="TextureButton" parent="shed"]
 self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
@@ -734,7 +724,7 @@ offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
 offset_bottom = 144.0
-expand_mode = 2
+expand_mode = 5
 
 [node name="Buy2" type="Button" parent="shop/VBoxContainer/actual/items/HBoxContainer"]
 layout_mode = 2
@@ -775,7 +765,7 @@ offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
 offset_bottom = 144.0
-expand_mode = 2
+expand_mode = 5
 
 [node name="Buy3" type="Button" parent="shop/VBoxContainer/actual/items/HBoxContainer"]
 layout_mode = 2
@@ -816,7 +806,7 @@ offset_left = 103.0
 offset_top = 67.0
 offset_right = 180.0
 offset_bottom = 144.0
-expand_mode = 2
+expand_mode = 5
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="shop/VBoxContainer/actual/items"]
 layout_mode = 2

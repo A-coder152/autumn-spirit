@@ -26,7 +26,7 @@ extends Control
 	$shed/couch,
 	$shed/bed,
 	$shed/clock,
-	$shed/frame,
+	$shed/drawing,
 	$shed/mirror
 ]
 @onready var shedboi_btn_list = [

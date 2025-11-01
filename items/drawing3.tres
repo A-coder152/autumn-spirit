@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d058ayod8x5rd"]
+
+[ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="1_lkgnh"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_msngo"]
+
+[resource]
+script = ExtResource("2_msngo")
+item_name = "Red Drawing"
+desc = "The color of love. Reduces time away before penalties by 10%"
+image = ExtResource("1_lkgnh")
+modulate = Color(1, 0, 0, 1)
+cost = 150
+type = 4
+effect = 9
+impact = 1.1
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

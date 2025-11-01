@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b8wky0jp8dlcu"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_1kc41"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_3b6fy"]
+
+[resource]
+script = ExtResource("2_3b6fy")
+item_name = "Cyan Mirror"
+desc = "Reflect on your successes. +20% max rest"
+image = ExtResource("1_1kc41")
+modulate = Color(0, 1, 1, 1)
+cost = 250
+type = 5
+effect = 5
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

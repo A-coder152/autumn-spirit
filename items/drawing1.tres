@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://do1e37t01r8dj"]
+
+[ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="1_5oxjv"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_kf7j2"]
+
+[resource]
+script = ExtResource("2_kf7j2")
+item_name = "Purple Drawing"
+desc = "Amusing. Reduces outside rest drain by 7%"
+image = ExtResource("1_5oxjv")
+modulate = Color(1, 0, 1, 1)
+cost = 50
+type = 4
+effect = 6
+impact = 0.93
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dg4duemgph5a2"]
+
+[ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="1_7m1mh"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_28rkn"]
+
+[resource]
+script = ExtResource("2_28rkn")
+item_name = "Yellow Drawing"
+desc = "Just looking at this makes you happy. +50% happiness when resting."
+image = ExtResource("1_7m1mh")
+modulate = Color(1, 1, 0, 1)
+cost = 300
+type = 4
+effect = 4
+impact = 1.5
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

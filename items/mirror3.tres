@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://crldtmolntibr"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_mla3u"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_lehgm"]
+
+[resource]
+script = ExtResource("2_lehgm")
+item_name = "Red Mirror"
+desc = "Makes you look slightly more evil. -15% rest drain outside"
+image = ExtResource("1_mla3u")
+modulate = Color(1, 0, 0, 1)
+cost = 125
+type = 5
+effect = 6
+impact = 0.85
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1ec65jdp14lo"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_5aubc"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_xdtbp"]
+
+[resource]
+script = ExtResource("2_xdtbp")
+item_name = "Blue Mirror"
+desc = "Reflect on your actions... +3.5% time away before penalties"
+image = ExtResource("1_5aubc")
+modulate = Color(0, 0, 1, 1)
+cost = 50
+type = 5
+effect = 9
+impact = 1.035
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -27,28 +27,42 @@ var items = [
 	preload("res://items/couch1.tres"),
 	preload("res://items/bed1.tres"),
 	preload("res://items/clock1.tres"),
+	preload("res://items/drawing1.tres"),
+	preload("res://items/mirror1.tres"),
 	preload("res://items/couch2.tres"),
+	preload("res://items/drawing2.tres"),
 	preload("res://items/mat2.tres"),
 	preload("res://items/bed2.tres"),
 	preload("res://items/couch3.tres"),
+	preload("res://items/mirror2.tres"),
 	preload("res://items/bed3.tres"),
 	preload("res://items/clock2.tres"),
+	preload("res://items/mirror3.tres"),
 	preload("res://items/mat3.tres"),
 	preload("res://items/couch4.tres"),
+	preload("res://items/drawing3.tres"),
 	preload("res://items/mat4.tres"),
 	preload("res://items/clock3.tres"),
 	preload("res://items/bed4.tres"),
+	preload("res://items/drawing4.tres"),
 	preload("res://items/clock4.tres"),
 	preload("res://items/mat5.tres"),
+	preload("res://items/mirror4.tres"),
 	preload("res://items/couch5.tres"),
 	preload("res://items/bed5.tres"),
 	preload("res://items/clock5.tres"),
+	preload("res://items/drawing5.tres"),
+	preload("res://items/mirror5.tres"),
 	preload("res://items/mat6.tres"),
 	preload("res://items/couch6.tres"),
 	preload("res://items/clock6.tres"),
-	preload("res://items/bed6.tres")
+	preload("res://items/drawing6.tres"),
+	preload("res://items/bed6.tres"),
+	preload("res://items/mirror6.tres")
 ]
 var item_unlocks = [
+	false, false, false, false, false, false,
+	false, false, false, false, false, false,
 	false, false, false, false, false, false,
 	false, false, false, false, false, false,
 	false, false, false, false, false, false,
@@ -72,7 +86,7 @@ func _load_or_init() -> void:
 	leaves = (data.get("leaves", 0))
 	uncollected_leaves = (data.get("uncollected_leaves", 0))
 	happiness = (data.get("happiness", 80.0))
-	#item_unlocks = (data.get("item_unlocks", item_unlocks))
+	item_unlocks = (data.get("item_unlocks", item_unlocks))
 	away_drain_per_minute = (data.get("away_drain_per_minute", 2.0))
 	max_leaves_per_minute = (data.get("max_leaves_per_minute", 10.0))
 	last_update = data.get("last_update", Time.get_unix_time_from_system())
@@ -86,7 +100,7 @@ func _load_or_init() -> void:
 	rest_shed_gain_per_minute = data.get("rest_shed_gain_per_minute", rest_shed_gain_per_minute)
 	rest_nothappy_drain_per_minute = data.get("rest_nothappy_drain_per_minute", rest_nothappy_drain_per_minute)
 	loneliness_time = data.get("loneliness_time", loneliness_time)
-	#equipped_items = data.get("equipped_items", equipped_items)
+	equipped_items = data.get("equipped_items", equipped_items)
 	_notify_status("Welcome back")
 
 func _save() -> void:

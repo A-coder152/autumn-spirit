@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cljim17yyadry"]
+
+[ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="1_1owwr"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_14owr"]
+
+[resource]
+script = ExtResource("2_14owr")
+item_name = "Purple Mirror"
+desc = "Lightens the mood. +20% happiness when resting."
+image = ExtResource("1_1owwr")
+modulate = Color(1, 0, 1, 1)
+cost = 100
+type = 5
+effect = 4
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

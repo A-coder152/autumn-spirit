@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://buf0h4lxnsh10"]
+
+[ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="1_hh1d1"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_j2inh"]
+
+[resource]
+script = ExtResource("2_j2inh")
+item_name = "Blue  Drawing"
+desc = "I think you'll kill me if I make one more \"feeling blue\" joke. Reduces restlessness by 7%."
+image = ExtResource("1_hh1d1")
+modulate = Color(0, 0, 1, 1)
+cost = 75
+type = 4
+effect = 8
+impact = 0.93
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"
