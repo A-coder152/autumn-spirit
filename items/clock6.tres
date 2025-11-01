@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cnwv47ikkdhta"]
+
+[ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="1_thq8i"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_qpg52"]
+
+[resource]
+script = ExtResource("2_qpg52")
+item_name = "Cyan Clock"
+desc = "The ultimate timekeeper. +25% Leaf collection speed"
+image = ExtResource("1_thq8i")
+modulate = Color(0, 1, 1, 1)
+cost = 300
+type = 3
+effect = 0
+impact = 1.25
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

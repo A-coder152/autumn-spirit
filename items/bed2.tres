@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b1wtw6ms6gcw"]
+
+[ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="1_ea0hy"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_a7kc3"]
+
+[resource]
+script = ExtResource("2_a7kc3")
+item_name = "Green Bed"
+desc = "Sleep for so long, they won't notice you're gone. Increase time away w/o penalties by 5%"
+image = ExtResource("1_ea0hy")
+modulate = Color(0, 1, 0, 1)
+cost = 100
+type = 2
+effect = 9
+impact = 1.05
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

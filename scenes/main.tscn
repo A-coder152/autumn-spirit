@@ -201,15 +201,6 @@ texture = ExtResource("7_o6xl0")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="leave" type="Button" parent="shed"]
-layout_mode = 0
-offset_left = 867.0
-offset_top = 580.0
-offset_right = 1093.0
-offset_bottom = 643.0
-theme_override_font_sizes/font_size = 40
-text = "Leave Shed"
-
 [node name="couch" type="TextureButton" parent="shed"]
 self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
 layout_mode = 0
@@ -233,7 +224,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="bed" type="TextureButton" parent="shed"]
-self_modulate = Color(0.0666667, 0.0666667, 0.0666667, 1)
+self_modulate = Color(0.0392157, 0.0392157, 0.0392157, 1)
 layout_mode = 0
 offset_top = 293.0
 offset_right = 306.0
@@ -243,7 +234,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="clock" type="TextureButton" parent="shed"]
-self_modulate = Color(0.0383972, 0.0383972, 0.0383972, 1)
+self_modulate = Color(0.0392157, 0.0392157, 0.0392157, 1)
 layout_mode = 0
 offset_left = 38.0
 offset_top = 135.0
@@ -284,6 +275,15 @@ offset_bottom = 300.0
 texture_normal = ExtResource("10_trceg")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="leave" type="Button" parent="shed"]
+layout_mode = 0
+offset_left = 867.0
+offset_top = 580.0
+offset_right = 1093.0
+offset_bottom = 643.0
+theme_override_font_sizes/font_size = 40
+text = "Leave Shed"
 
 [node name="vbox" type="VBoxContainer" parent="."]
 layout_mode = 1

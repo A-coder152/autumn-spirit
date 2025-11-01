@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dps24the0gcxj"]
+
+[ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="1_5ccqb"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_um0xv"]
+
+[resource]
+script = ExtResource("2_um0xv")
+item_name = "Blue Bed"
+desc = "Won't feel blue on this one! Increases shed happiness gain by 20%"
+image = ExtResource("1_5ccqb")
+modulate = Color(0.0666667, 0.286275, 1, 1)
+cost = 125
+type = 2
+effect = 4
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://yxthec8gh47i"]
+
+[ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="1_tb0rv"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_udauk"]
+
+[resource]
+script = ExtResource("2_udauk")
+item_name = "Blue Clock"
+desc = "Time goes by faster... somehow. +5% Rest gain"
+image = ExtResource("1_tb0rv")
+modulate = Color(0, 0, 1, 1)
+cost = 50
+type = 3
+effect = 7
+impact = 1.05
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

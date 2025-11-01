@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cbd4j1wm5vook"]
+
+[ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="1_54wl4"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_fklqu"]
+
+[resource]
+script = ExtResource("2_fklqu")
+item_name = "Purple Clock"
+desc = "Time goes by slower while away. -15% happiness loss when away"
+image = ExtResource("1_54wl4")
+modulate = Color(1, 0, 1, 1)
+cost = 175
+type = 3
+effect = 3
+impact = 0.85
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

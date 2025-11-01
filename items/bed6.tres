@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://byrsa7cf2f8oq"]
+
+[ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="1_t6lve"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_317tw"]
+
+[resource]
+script = ExtResource("2_317tw")
+item_name = "Yellow Bed"
+desc = "Sleeping for a looong time. +20% time away before penalties."
+image = ExtResource("1_t6lve")
+modulate = Color(1, 1, 0, 1)
+cost = 350
+type = 2
+effect = 9
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

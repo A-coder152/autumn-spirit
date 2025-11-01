@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://deotepwdo3t20"]
+
+[ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="1_nliyu"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_622aj"]
+
+[resource]
+script = ExtResource("2_622aj")
+item_name = "Red Clock"
+desc = "Tracking time makes collecting easier. +10% Leaf Collection Speed"
+image = ExtResource("1_nliyu")
+modulate = Color(1, 0, 0, 1)
+cost = 125
+type = 3
+effect = 0
+impact = 1.1
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

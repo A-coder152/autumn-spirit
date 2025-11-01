@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cad835d2ghieq"]
+
+[ext_resource type="Texture2D" uid="uid://bpoyisoiuwcjf" path="res://images/clock.png" id="1_xsuiu"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_m4qwq"]
+
+[resource]
+script = ExtResource("2_m4qwq")
+item_name = "Green Clock"
+desc = "Hold more leaves to make it in time. +15% Max Leaves"
+image = ExtResource("1_xsuiu")
+modulate = Color(0, 1, 0, 1)
+cost = 175
+type = 3
+effect = 1
+impact = 1.15
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

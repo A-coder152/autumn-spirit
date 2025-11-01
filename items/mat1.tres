@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_1q6pp")
 item_name = "Green mat"
-desc = "A comfortable mat that boosts rest gain by 10%."
+desc = "A comfortable mat that boosts rest gain by 7%."
 image = ExtResource("1_66ogn")
 modulate = Color(0, 1, 0, 1)
 cost = 50
 type = 0
 effect = 7
-impact = 1.1
+impact = 1.07
 metadata/_custom_type_script = "uid://cmtwojw5ncmth"

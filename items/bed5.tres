@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cma8tgjuglujj"]
+
+[ext_resource type="Texture2D" uid="uid://b2gjj5faddacn" path="res://images/bed.png" id="1_vi41y"]
+[ext_resource type="Script" uid="uid://cmtwojw5ncmth" path="res://items/item_resource.gd" id="2_pqqxs"]
+
+[resource]
+script = ExtResource("2_pqqxs")
+item_name = "Cyan Bed"
+desc = "Super comfy. +20% Max rest"
+image = ExtResource("1_vi41y")
+modulate = Color(0, 0.85098, 1, 1)
+cost = 250
+type = 2
+effect = 5
+impact = 1.2
+metadata/_custom_type_script = "uid://cmtwojw5ncmth"

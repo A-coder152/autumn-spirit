@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_xt6yf")
 item_name = "Magenta mat"
-desc = "So pretty and even comfier! +30% faster resting"
+desc = "So pretty and even comfier! +21% faster resting"
 image = ExtResource("1_uiyi3")
 modulate = Color(1, 0, 1, 1)
 cost = 200
 type = 0
 effect = 7
-impact = 1.3
+impact = 1.21
 metadata/_custom_type_script = "uid://cmtwojw5ncmth"
