@@ -2,7 +2,7 @@ extends Control
 
 @onready var stats = $vbox
 @onready var sprite = $"leaf guy"
-@onready var leaves_label = $topbar/leaves/Label
+@onready var leaves_label: Label = $topbar/leaves/Label
 @onready var collect_btn = $vbox/actions/collect
 @onready var happiness_bar = $vbox/happiness/ProgressBar
 @onready var feed_btn = $vbox/actions/feed
@@ -10,7 +10,7 @@ extends Control
 @onready var status_label = $status
 @onready var shop_window = $shop
 @onready var close_shop_btn = $shop/VBoxContainer/leave
-@onready var uncollected_bar = $vbox/leafbar/ProgressBar
+@onready var uncollected_bar: ProgressBar = $vbox/leafbar/ProgressBar
 @onready var rest_bar = $vbox/Rest/ProgressBar
 @onready var shop_buy_btn_list: Array[Button] = [
 	$shop/VBoxContainer/actual/items/HBoxContainer/Buy, 
@@ -38,6 +38,18 @@ extends Control
 	$shedboi/VBoxContainer/Button6
 ]
 @onready var shedboi = $shedboi
+@onready var outside_bg = $bg
+@onready var shed_bg = $shed/bg
+@onready var resource_app_list = [
+	$vbox/leafbar/TextureRect,
+	$topbar/leaves/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer/Buy/HBoxContainer/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer/Buy2/HBoxContainer/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer/Buy3/HBoxContainer/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy/HBoxContainer/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy2/HBoxContainer/TextureRect,
+	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy3/HBoxContainer/TextureRect
+]
 
 var shop_view_idx = 0
 var shedboi_positions = [
@@ -70,7 +82,23 @@ func _ready() -> void:
 	for btn in shedboi_btn_list:
 		btn.pressed.connect(func(): change_equipped(btn))
 	if GameManager.environment == "shed": _on_shed_pressed()
+	apply_theme()
 	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
+
+func apply_theme():
+	var cur_theme: GameTheme = load(GameManager.theme)
+	sprite.texture = cur_theme.main_char
+	sprite.scale = cur_theme.main_char_scale if GameManager.environment == "outside" else cur_theme.main_char_scale * 2./3.
+	outside_bg.texture = cur_theme.outside_bg
+	shed_bg.texture = cur_theme.shed_bg
+	for figma in resource_app_list:
+		figma.texture = cur_theme.resource
+	$topbar/leaves.get_theme_stylebox("panel").bg_color = cur_theme.heavy
+	leaves_label.add_theme_color_override("font_color", cur_theme.less_light)
+	uncollected_bar.add_theme_color_override("font_color", cur_theme.heavy)
+	uncollected_bar.get_theme_stylebox("background").bg_color = cur_theme.normal
+	uncollected_bar.get_theme_stylebox("background").border_color = cur_theme.less_light
+	uncollected_bar.get_theme_stylebox("fill").bg_color = cur_theme.light
 
 func _on_stats_changed(leaves:int, uncollected:int, happiness:float, rest) -> void:
 	leaves_label.text = str(leaves)
@@ -192,3 +220,7 @@ func load_shed():
 		var thingo = shed_btn_list[i]
 		thingo.texture_normal = item.image
 		thingo.self_modulate = item.modulate
+
+func _on_button_pressed() -> void:
+	GameManager.theme = "res://themes/spooky_theme.tres" if GameManager.theme == "res://themes/fall_theme.tres" else "res://themes/fall_theme.tres"
+	apply_theme()

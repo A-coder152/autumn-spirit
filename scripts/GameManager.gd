@@ -3,6 +3,7 @@ extends Node
 signal stats_changed(leaves, uncollected, happiness, rest)
 signal status_message(msg)
 
+var theme = "res://themes/fall_theme.tres"
 var environment = "outside"
 
 var leaves = 0
@@ -83,6 +84,7 @@ func _load_or_init() -> void:
 		last_update = Time.get_unix_time_from_system()
 		_notify_status("Welcome")
 		return
+	theme = data.get("theme", "res://themes/fall_theme.tres")
 	leaves = (data.get("leaves", 0))
 	uncollected_leaves = (data.get("uncollected_leaves", 0))
 	happiness = (data.get("happiness", 80.0))
@@ -105,6 +107,7 @@ func _load_or_init() -> void:
 
 func _save() -> void:
 	var data = {
+		"theme": theme,
 		"leaves": leaves,
 		"uncollected_leaves": uncollected_leaves,
 		"happiness": happiness,

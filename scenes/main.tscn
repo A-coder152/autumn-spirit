@@ -275,7 +275,6 @@ theme_override_constants/separation = 10
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="vbox/leafbar"]
-modulate = Color(0.756863, 1, 0.760784, 1)
 layout_mode = 2
 texture = ExtResource("2_tbgi4")
 expand_mode = 2
@@ -942,9 +941,16 @@ autostart = true
 wait_time = 15.0
 autostart = true
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Switch theme (why not)"
+
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
 [connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
 [connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
