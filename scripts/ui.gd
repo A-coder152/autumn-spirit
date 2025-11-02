@@ -52,6 +52,11 @@ extends Control
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy3/HBoxContainer/TextureRect
 ]
 @onready var settings_panel = $settings/Panel
+@onready var settings_labels = [
+	$settings/Panel/VBoxContainer/HBoxContainer/Label,
+	$settings/Panel/VBoxContainer/HBoxContainer2/Label,
+	$settings/Panel/VBoxContainer/HBoxContainer2/countah
+]
 
 var shop_view_idx = 0
 var shedboi_positions = [
@@ -101,7 +106,8 @@ func apply_theme():
 	uncollected_bar.get_theme_stylebox("background").bg_color = cur_theme.normal
 	uncollected_bar.get_theme_stylebox("background").border_color = cur_theme.less_light
 	uncollected_bar.get_theme_stylebox("fill").bg_color = cur_theme.light
-	$settings/Panel/VBoxContainer/HBoxContainer/Label.add_theme_color_override("font_color", cur_theme.heavy)
+	for sigma in settings_labels:
+		sigma.add_theme_color_override("font_color", cur_theme.heavy)
 	settings_panel.get_theme_stylebox("panel").bg_color = cur_theme.normal
 	settings_panel.get_theme_stylebox("panel").border_color = cur_theme.heavy
 
@@ -236,3 +242,7 @@ func _on_leave_settings_pressed() -> void:
 
 func _on_settinger_pressed() -> void:
 	settings.show()
+
+func _on_timeman_value_changed(value: float) -> void:
+	GameManager.time_speed = value
+	settings_labels[2].text = "x" + str(int(value * 10) / 10.)

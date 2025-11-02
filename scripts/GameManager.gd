@@ -72,6 +72,7 @@ var item_unlocks = [
 var equipped_items = [null, null, null, null, null, null]
 
 var last_update
+var time_speed = 1
 var loneliness_time = 480
 
 func _ready() -> void:
@@ -223,6 +224,7 @@ func update_stuff() -> void:
 	var now = Time.get_unix_time_from_system()
 	if not last_update: last_update = now - 1
 	var delta_mins = (now - last_update) / 60.
+	if delta_mins < 1: delta_mins *= time_speed
 	var normal_mins = min(delta_mins, loneliness_time)
 	var mins_over_loneliness = min(delta_mins - loneliness_time, loneliness_time)
 	var you_r_dead = delta_mins - loneliness_time * 2

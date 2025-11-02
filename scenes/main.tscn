@@ -975,6 +975,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
 [node name="Control" type="Control" parent="settings/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 23)
@@ -1004,6 +1005,41 @@ theme_override_font_sizes/font_size = 24
 text = "Switch"
 
 [node name="Control3" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="settings/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.639216, 0.164706, 1)
+theme_override_font_sizes/font_size = 24
+text = "Speed Up Time"
+
+[node name="Control5" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="countah" type="Label" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "x1"
+
+[node name="timeman" type="HSlider" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 25.0
+step = 0.1
+value = 1.0
+
+[node name="Control6" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
@@ -1044,6 +1080,7 @@ autostart = true
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_switch_theme_pressed"]
+[connection signal="value_changed" from="settings/Panel/VBoxContainer/HBoxContainer2/timeman" to="." method="_on_timeman_value_changed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/leave_settings" to="." method="_on_leave_settings_pressed"]
 [connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
