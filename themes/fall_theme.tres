@@ -18,4 +18,13 @@ light = Color(0.756863, 1, 0.760784, 1)
 less_light = Color(0.545098, 1, 0.568627, 1)
 normal = Color(0.168627, 1, 0.317647, 1)
 heavy = Color(0, 0.639216, 0.164706, 1)
+resources = Array[Dictionary]([{
+"food": false,
+"texture": "res://images/leaf.png",
+"title": "Leaf"
+}, {
+"food": false,
+"texture": "res://images/soul.png",
+"title": "Seed"
+}])
 metadata/_custom_type_script = "uid://baat7prhn42c0"

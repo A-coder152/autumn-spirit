@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_gpbd7")
-recipe_name = "Seeds"
+recipe_name = "Tomatoes"
 location = "Farm"
-mins = 1
-input = "Base"
-input_amount = 5
-export = "Seeds"
-export_amount = 1
+mins = 10
+input = 1
+input_amount = 2
+output = 3
+output_amount = 1
 metadata/_custom_type_script = "uid://cj8jgenvlu7xt"

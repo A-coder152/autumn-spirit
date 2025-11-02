@@ -75,6 +75,10 @@ var last_update
 var time_speed = 1
 var loneliness_time = 480
 
+var recipes = [preload("res://recipes/seeds_recipe.tres")]
+var resources
+var resources_count = [0, 0, 0, 0, 0]
+
 func _ready() -> void:
 	_load_or_init()
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)

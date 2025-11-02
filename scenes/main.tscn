@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=26 format=3 uid="uid://b31gw4wegrc68"]
 
 [ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="2_tbgi4"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://c7fslnwa0ehpn" path="res://images/ghost.png" id="13_trceg"]
 [ext_resource type="Texture2D" uid="uid://blbk03332qs6j" path="res://images/settings.png" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://cnoctwbx4n2ms" path="res://images/woodwall.png" id="14_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://h5xdmbnohprb" path="res://images/arrow.png" id="15_muem4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.639216, 0.164706, 1)
@@ -622,6 +624,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="farm" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -636,9 +639,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.838897, 0.838897, 0.838897, 1)
+color = Color(0.941176, 0.854902, 0.647059, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="farm/ColorRect"]
+[node name="TextureRect" type="TextureRect" parent="farm"]
+layout_mode = 2
+offset_left = 366.0
+offset_top = -29.0
+offset_right = 779.0
+offset_bottom = 129.0
+texture = ExtResource("14_jbj1t")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="farm/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.941176, 0.854902, 0.647059, 1)
+theme_override_font_sizes/font_size = 64
+text = "Farm"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="farm/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="buton" type="Button" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 164)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -646,25 +697,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="farm/ColorRect/VBoxContainer"]
+[node name="title" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Farm"
+theme_override_font_sizes/font_size = 32
+text = "Seeds"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="farm/ColorRect/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 24
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="farm/ColorRect/VBoxContainer/ScrollContainer"]
+[node name="Control2" type="Control" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="farm/ColorRect/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="input" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="leave_farm" type="Button" parent="farm/ColorRect/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/input"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("3_tefeu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/input"]
+layout_mode = 2
+text = "The Chickn Nuget"
+
+[node name="TextureRect" type="TextureRect" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(112, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_muem4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="timen" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 27.0
+grow_horizontal = 2
+text = "120m"
+horizontal_alignment = 1
+
+[node name="output" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/output"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+texture = ExtResource("10_trceg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/output"]
+layout_mode = 2
+text = "The Chickn Nuget"
+
+[node name="Control" type="Control" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="leave_farm" type="Button" parent="farm/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Leave Farm"
@@ -1132,7 +1234,7 @@ autostart = true
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
 [connection signal="pressed" from="bottombar/farm" to="." method="_on_farm_pressed"]
 [connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
-[connection signal="pressed" from="farm/ColorRect/VBoxContainer/leave_farm" to="." method="_on_leave_farm_pressed"]
+[connection signal="pressed" from="farm/VBoxContainer/leave_farm" to="." method="_on_leave_farm_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
 [connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]

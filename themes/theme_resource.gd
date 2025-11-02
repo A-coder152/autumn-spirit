@@ -13,3 +13,5 @@ class_name GameTheme extends Resource
 @export var less_light: Color
 @export var normal: Color
 @export var heavy: Color
+
+@export var resources: Array[Dictionary]
