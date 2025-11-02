@@ -224,3 +224,4 @@ func load_shed():
 func _on_button_pressed() -> void:
 	GameManager.theme = "res://themes/spooky_theme.tres" if GameManager.theme == "res://themes/fall_theme.tres" else "res://themes/fall_theme.tres"
 	apply_theme()
+	GameManager._save()

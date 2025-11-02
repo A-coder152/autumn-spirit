@@ -145,6 +145,7 @@ func collect_leaves() -> void:
 func boost_happiness(amount: float = 10.0) -> void:
 	var before = happiness
 	happiness = clamp(happiness + amount, 0.0, max_happiness)
+	leaves = max(0, leaves - amount * 3)
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
 	if happiness > before:
 		_notify_status("Happiness increased by (+%d)" % int(amount))
