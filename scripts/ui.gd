@@ -11,6 +11,7 @@ extends Control
 @onready var shop_window = $shop
 @onready var close_shop_btn = $shop/VBoxContainer/leave
 @onready var uncollected_bar: ProgressBar = $vbox/leafbar/ProgressBar
+@onready var settings = $settings
 @onready var rest_bar = $vbox/Rest/ProgressBar
 @onready var shop_buy_btn_list: Array[Button] = [
 	$shop/VBoxContainer/actual/items/HBoxContainer/Buy, 
@@ -50,6 +51,7 @@ extends Control
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy2/HBoxContainer/TextureRect,
 	$shop/VBoxContainer/actual/items/HBoxContainer3/Buy3/HBoxContainer/TextureRect
 ]
+@onready var settings_panel = $settings/Panel
 
 var shop_view_idx = 0
 var shedboi_positions = [
@@ -99,6 +101,9 @@ func apply_theme():
 	uncollected_bar.get_theme_stylebox("background").bg_color = cur_theme.normal
 	uncollected_bar.get_theme_stylebox("background").border_color = cur_theme.less_light
 	uncollected_bar.get_theme_stylebox("fill").bg_color = cur_theme.light
+	$settings/Panel/VBoxContainer/HBoxContainer/Label.add_theme_color_override("font_color", cur_theme.heavy)
+	settings_panel.get_theme_stylebox("panel").bg_color = cur_theme.normal
+	settings_panel.get_theme_stylebox("panel").border_color = cur_theme.heavy
 
 func _on_stats_changed(leaves:int, uncollected:int, happiness:float, rest) -> void:
 	leaves_label.text = str(leaves)
@@ -221,7 +226,13 @@ func load_shed():
 		thingo.texture_normal = item.image
 		thingo.self_modulate = item.modulate
 
-func _on_button_pressed() -> void:
+func _on_switch_theme_pressed() -> void:
 	GameManager.theme = "res://themes/spooky_theme.tres" if GameManager.theme == "res://themes/fall_theme.tres" else "res://themes/fall_theme.tres"
 	apply_theme()
 	GameManager._save()
+
+func _on_leave_settings_pressed() -> void:
+	settings.hide()
+
+func _on_settinger_pressed() -> void:
+	settings.show()

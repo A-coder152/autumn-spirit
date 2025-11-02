@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b31gw4wegrc68"]
+[gd_scene load_steps=24 format=3 uid="uid://b31gw4wegrc68"]
 
 [ext_resource type="Script" uid="uid://b85wg5yhpuen2" path="res://scripts/ui.gd" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://wkft1ydliako" path="res://images/leaf.png" id="2_tbgi4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://gk60pi28goa2" path="res://images/drawing.png" id="9_trceg"]
 [ext_resource type="Texture2D" uid="uid://byv88hfv3udab" path="res://images/mirror.png" id="10_trceg"]
 [ext_resource type="Texture2D" uid="uid://c7fslnwa0ehpn" path="res://images/ghost.png" id="13_trceg"]
+[ext_resource type="Texture2D" uid="uid://blbk03332qs6j" path="res://images/settings.png" id="14_a8y0u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.639216, 0.164706, 1)
@@ -78,6 +79,14 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkv2x"]
+bg_color = Color(0.168627, 1, 0.317647, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0, 0.639216, 0.164706, 1)
 
 [node name="UI" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
@@ -934,6 +943,95 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Leave Shop"
 
+[node name="settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="alofa" type="ColorRect" parent="settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.180005, 0.180005, 0.180005, 0.717647)
+
+[node name="Panel" type="Panel" parent="settings"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 179.0
+offset_right = 818.0
+offset_bottom = 422.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jkv2x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="settings/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.639216, 0.164706, 1)
+theme_override_font_sizes/font_size = 24
+text = "Change Theme"
+
+[node name="Control" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Switch"
+
+[node name="Control3" type="Control" parent="settings/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="settings/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="leave_settings" type="Button" parent="settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Leave Shop"
+
+[node name="Control3" type="Control" parent="settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+
+[node name="settinger" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 88.0
+offset_bottom = 88.0
+texture_normal = ExtResource("14_a8y0u")
+ignore_texture_size = true
+stretch_mode = 4
+
 [node name="Update" type="Timer" parent="."]
 autostart = true
 
@@ -941,16 +1039,12 @@ autostart = true
 wait_time = 15.0
 autostart = true
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Switch theme (why not)"
-
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
 [connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="settings/Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_switch_theme_pressed"]
+[connection signal="pressed" from="settings/Panel/VBoxContainer/leave_settings" to="." method="_on_leave_settings_pressed"]
+[connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
