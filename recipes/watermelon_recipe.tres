@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_0bwlh")
-recipe_name = "Tomatoes"
+recipe_name = "Watermelon"
 location = "Farm"
 mins = 300
 input = 1

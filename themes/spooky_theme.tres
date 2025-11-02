@@ -20,4 +20,28 @@ light = Color(0.877616, 0.877616, 0.877616, 1)
 less_light = Color(0.738825, 0.73613, 0.740141, 1)
 normal = Color(0.635713, 0.632481, 0.637292, 1)
 heavy = Color(0.419813, 0.419813, 0.419813, 1)
+resources = Array[Dictionary]([{
+"food": false,
+"texture": "res://images/soul.png",
+"title": "Soul"
+}, {
+"food": false,
+"texture": "res://images/bonedust.png",
+"title": "Bone Dust"
+}, {
+"food": true,
+"recovery": 4,
+"texture": "res://images/poisonapple.png",
+"title": "Poison Apple"
+}, {
+"food": true,
+"recovery": 2,
+"texture": "res://images/bloodorb.png",
+"title": "Blood Orb"
+}, {
+"food": true,
+"recovery": 50,
+"texture": "res://images/pumpkin.png",
+"title": "Pumpkin"
+}])
 metadata/_custom_type_script = "uid://baat7prhn42c0"

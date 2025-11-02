@@ -75,7 +75,12 @@ var last_update
 var time_speed = 1
 var loneliness_time = 480
 
-var recipes = [preload("res://recipes/seeds_recipe.tres")]
+var recipes = [
+	preload("res://recipes/seeds_recipe.tres"),
+	preload("res://recipes/apples_recipe.tres"),
+	preload("res://recipes/tomato_recipe.tres"),
+	preload("res://recipes/watermelon_recipe.tres")
+]
 var resources
 var resources_count = [0, 0, 0, 0, 0]
 

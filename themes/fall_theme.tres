@@ -24,7 +24,22 @@ resources = Array[Dictionary]([{
 "title": "Leaf"
 }, {
 "food": false,
-"texture": "res://images/soul.png",
+"texture": "res://images/seeds.png",
 "title": "Seed"
+}, {
+"food": true,
+"recovery": 4,
+"texture": "res://images/apple.png",
+"title": "Apple"
+}, {
+"food": true,
+"recovery": 2,
+"texture": "res://images/tomato.png",
+"title": "Tomato"
+}, {
+"food": true,
+"recovery": 50,
+"texture": "res://images/watermelon.png",
+"title": "Watermelon"
 }])
 metadata/_custom_type_script = "uid://baat7prhn42c0"

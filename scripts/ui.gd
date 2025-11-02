@@ -259,8 +259,11 @@ func _on_farm_pressed() -> void:
 		recipe_btn.get_node("buton/VBoxContainer/title").text = recipe.recipe_name
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/Label").text = "x" + str(recipe.input_amount) + " " + GameManager.resources[recipe.input].title
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/TextureRect").texture = load(GameManager.resources[recipe.input].texture)
+		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/Label2").text = "Owned: " + str(GameManager.resources_count[recipe.input])
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/Label").text = "x" + str(recipe.output_amount) + " " + GameManager.resources[recipe.output].title
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/TextureRect").texture = load(GameManager.resources[recipe.output].texture)
+		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/Label3").text = "Owned: " + str(GameManager.resources_count[recipe.output])
+		if GameManager.resources[recipe.output].food: recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/TextureRect").tooltip_text = "Recovers " + str(GameManager.resources[recipe.output].recovery) + " Happiness"
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/TextureRect/timen").text = str(recipe.mins) + "m"
 		farm_cont.add_child(recipe_btn)
 		recipe_btn.show()

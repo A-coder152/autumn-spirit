@@ -623,6 +623,16 @@ text = "You don't own any item that belongs here!"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="settinger" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 88.0
+offset_bottom = 88.0
+texture_normal = ExtResource("14_a8y0u")
+ignore_texture_size = true
+stretch_mode = 4
+
 [node name="farm" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -685,7 +695,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="buton" type="Button" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 164)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -714,6 +724,11 @@ size_flags_horizontal = 3
 
 [node name="input" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/input"]
+layout_mode = 2
+text = "Owned: 4"
+horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/input"]
 custom_minimum_size = Vector2(0, 64)
@@ -746,6 +761,11 @@ horizontal_alignment = 1
 
 [node name="output" type="VBoxContainer" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="Label3" type="Label" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/output"]
+layout_mode = 2
+text = "Owned: 4"
+horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/buton/VBoxContainer/HBoxContainer/output"]
 custom_minimum_size = Vector2(0, 64)
@@ -1098,16 +1118,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Leave Shop"
 
-[node name="settinger" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 88.0
-offset_bottom = 88.0
-texture_normal = ExtResource("14_a8y0u")
-ignore_texture_size = true
-stretch_mode = 4
-
 [node name="settings" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -1234,10 +1244,10 @@ autostart = true
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
 [connection signal="pressed" from="bottombar/farm" to="." method="_on_farm_pressed"]
 [connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="pressed" from="farm/VBoxContainer/leave_farm" to="." method="_on_leave_farm_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
-[connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_switch_theme_pressed"]
 [connection signal="value_changed" from="settings/Panel/VBoxContainer/HBoxContainer2/timeman" to="." method="_on_timeman_value_changed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/leave_settings" to="." method="_on_leave_settings_pressed"]
