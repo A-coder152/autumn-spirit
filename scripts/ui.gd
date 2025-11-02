@@ -9,6 +9,7 @@ extends Control
 @onready var shop_btn = $bottombar/shop
 @onready var status_label = $status
 @onready var shop_window = $shop
+@onready var farm = $farm
 @onready var close_shop_btn = $shop/VBoxContainer/leave
 @onready var uncollected_bar: ProgressBar = $vbox/leafbar/ProgressBar
 @onready var settings = $settings
@@ -246,3 +247,10 @@ func _on_settinger_pressed() -> void:
 func _on_timeman_value_changed(value: float) -> void:
 	GameManager.time_speed = value
 	settings_labels[2].text = "x" + str(int(value * 10) / 10.)
+
+func _on_farm_pressed() -> void:
+	farm.show()
+	var a = farm.duplicate()
+
+func _on_leave_farm_pressed() -> void:
+	farm.hide()

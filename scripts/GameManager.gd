@@ -229,7 +229,7 @@ func update_stuff() -> void:
 	var mins_over_loneliness = min(delta_mins - loneliness_time, loneliness_time)
 	var you_r_dead = delta_mins - loneliness_time * 2
 	if environment == "outside":
-		leaf_collection_progress += max_leaves_per_minute * normal_mins * (happiness / max_happiness)
+		leaf_collection_progress += max_leaves_per_minute * normal_mins * (happiness / max_happiness) * (rest / max_rest)
 		if leaf_collection_progress > 1:
 			uncollected_leaves = min(max_uncollected_leaves, uncollected_leaves + leaf_collection_progress / 1)
 			leaf_collection_progress -= leaf_collection_progress / 1
@@ -237,7 +237,7 @@ func update_stuff() -> void:
 		if mins_over_loneliness > 0:
 			var old_happiness = happiness
 			happiness = max(0, happiness - away_drain_per_minute * mins_over_loneliness)
-			leaf_collection_progress += max_leaves_per_minute * normal_mins * ((happiness + old_happiness) / 2. / max_happiness)
+			leaf_collection_progress += max_leaves_per_minute * normal_mins * ((happiness + old_happiness) / 2. / max_happiness) * (rest / max_rest)
 			if leaf_collection_progress > 1:
 				uncollected_leaves = min(max_uncollected_leaves, uncollected_leaves + leaf_collection_progress / 1)
 				leaf_collection_progress -= leaf_collection_progress / 1

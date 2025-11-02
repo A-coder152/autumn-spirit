@@ -169,6 +169,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Shed"
 
+[node name="farm" type="Button" parent="bottombar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Farm"
+
 [node name="shop" type="Button" parent="bottombar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -616,6 +621,54 @@ text = "You don't own any item that belongs here!"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="farm" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="farm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.838897, 0.838897, 0.838897, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="farm/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="farm/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Farm"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="farm/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="farm/ColorRect/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="farm/ColorRect/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="leave_farm" type="Button" parent="farm/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Leave Farm"
+
 [node name="shop" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -943,7 +996,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Leave Shop"
 
+[node name="settinger" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 88.0
+offset_bottom = 88.0
+texture_normal = ExtResource("14_a8y0u")
+ignore_texture_size = true
+stretch_mode = 4
+
 [node name="settings" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1058,16 +1122,6 @@ text = "Leave Shop"
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 
-[node name="settinger" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 88.0
-offset_bottom = 88.0
-texture_normal = ExtResource("14_a8y0u")
-ignore_texture_size = true
-stretch_mode = 4
-
 [node name="Update" type="Timer" parent="."]
 autostart = true
 
@@ -1076,12 +1130,14 @@ wait_time = 15.0
 autostart = true
 
 [connection signal="pressed" from="bottombar/shed" to="." method="_on_shed_pressed"]
+[connection signal="pressed" from="bottombar/farm" to="." method="_on_farm_pressed"]
 [connection signal="pressed" from="shed/leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="farm/ColorRect/VBoxContainer/leave_farm" to="." method="_on_leave_farm_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/left" to="." method="_on_left_pressed"]
 [connection signal="pressed" from="shop/VBoxContainer/actual/right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/HBoxContainer/Button" to="." method="_on_switch_theme_pressed"]
 [connection signal="value_changed" from="settings/Panel/VBoxContainer/HBoxContainer2/timeman" to="." method="_on_timeman_value_changed"]
 [connection signal="pressed" from="settings/Panel/VBoxContainer/leave_settings" to="." method="_on_leave_settings_pressed"]
-[connection signal="pressed" from="settinger" to="." method="_on_settinger_pressed"]
 [connection signal="timeout" from="Update" to="." method="_on_generate_timeout"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

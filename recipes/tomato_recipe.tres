@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://dffqnpso0ffmh"]
+
+[ext_resource type="Script" uid="uid://cj8jgenvlu7xt" path="res://recipes/recipes_resource.gd" id="1_gpbd7"]
+
+[resource]
+script = ExtResource("1_gpbd7")
+recipe_name = "Seeds"
+location = "Farm"
+mins = 1
+input = "Base"
+input_amount = 5
+export = "Seeds"
+export_amount = 1
+metadata/_custom_type_script = "uid://cj8jgenvlu7xt"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://cqmxswcxu0ey5"]
+
+[ext_resource type="Script" uid="uid://cj8jgenvlu7xt" path="res://recipes/recipes_resource.gd" id="1_hrci1"]
+
+[resource]
+script = ExtResource("1_hrci1")
+recipe_name = "Apples"
+location = "Farm"
+mins = 600
+input = "Seeds"
+input_amount = 5
+export = "Apples"
+export_amount = 20
+metadata/_custom_type_script = "uid://cj8jgenvlu7xt"

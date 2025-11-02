@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://d3d46ohmggfd2"]
+
+[ext_resource type="Script" uid="uid://cj8jgenvlu7xt" path="res://recipes/recipes_resource.gd" id="1_0bwlh"]
+
+[resource]
+script = ExtResource("1_0bwlh")
+recipe_name = "Tomatoes"
+location = "Farm"
+mins = 300
+input = "Base"
+input_amount = 10
+export = "Watermelon"
+export_amount = 1
+metadata/_custom_type_script = "uid://cj8jgenvlu7xt"
