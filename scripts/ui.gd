@@ -64,6 +64,8 @@ extends Control
 	$settings/Panel/VBoxContainer/HBoxContainer2/Label,
 	$settings/Panel/VBoxContainer/HBoxContainer2/countah
 ]
+@onready var jumpscare = $jumpscare
+@onready var jumpscare_sound = $jumpscaresfx
 
 var shop_view_idx = 0
 var shedboi_positions = [
@@ -171,6 +173,13 @@ func _on_buy(num) -> void:
 
 func _on_autosave_timeout() -> void:
 	GameManager.autosave_timeout()
+	print(GameManager.theme)
+	if GameManager.theme == "res://themes/spooky_theme.tres" and randf() > 0.8:
+		print("get spooked lol")
+		jumpscare.show()
+		jumpscare_sound.play(0.2)
+		await get_tree().create_timer(2).timeout
+		jumpscare.hide()
 
 func _on_generate_timeout() -> void:
 	GameManager.update_stuff()
