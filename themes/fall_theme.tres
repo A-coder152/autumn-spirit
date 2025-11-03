@@ -28,17 +28,17 @@ resources = Array[Dictionary]([{
 "title": "Seed"
 }, {
 "food": true,
-"recovery": 4,
+"recovery": 5,
 "texture": "res://images/apple.png",
 "title": "Apple"
 }, {
 "food": true,
-"recovery": 2,
+"recovery": 3,
 "texture": "res://images/tomato.png",
 "title": "Tomato"
 }, {
 "food": true,
-"recovery": 50,
+"recovery": 75,
 "texture": "res://images/watermelon.png",
 "title": "Watermelon"
 }])

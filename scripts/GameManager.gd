@@ -2,6 +2,7 @@ extends Node
 
 signal stats_changed(leaves, uncollected, happiness, rest)
 signal status_message(msg)
+signal refresh_farm(full)
 
 var theme = "res://themes/fall_theme.tres"
 var environment = "outside"
@@ -81,6 +82,8 @@ var recipes = [
 	preload("res://recipes/tomato_recipe.tres"),
 	preload("res://recipes/watermelon_recipe.tres")
 ]
+var farm_action = -1
+var farm_time = 0
 var resources
 var resources_count = [0, 0, 0, 0, 0]
 
@@ -113,6 +116,9 @@ func _load_or_init() -> void:
 	rest_nothappy_drain_per_minute = data.get("rest_nothappy_drain_per_minute", rest_nothappy_drain_per_minute)
 	loneliness_time = data.get("loneliness_time", loneliness_time)
 	equipped_items = data.get("equipped_items", equipped_items)
+	resources_count = data.get("resources_count", resources_count)
+	farm_action = data.get("farm_action", farm_action)
+	farm_time = data.get("farm_time", farm_time)
 	_notify_status("Welcome back")
 
 func _save() -> void:
@@ -135,7 +141,10 @@ func _save() -> void:
 		"rest_shed_gain_per_minute": rest_shed_gain_per_minute,
 		"rest_nothappy_drain_per_minute": rest_nothappy_drain_per_minute,
 		"loneliness_time": loneliness_time,
-		"equipped_items": equipped_items
+		"equipped_items": equipped_items,
+		"resources_count": resources_count,
+		"farm_action": farm_action,
+		"farm_time": farm_time
 	}
 	Save.save_game(data)
 
@@ -237,6 +246,12 @@ func update_stuff() -> void:
 	var normal_mins = min(delta_mins, loneliness_time)
 	var mins_over_loneliness = min(delta_mins - loneliness_time, loneliness_time)
 	var you_r_dead = delta_mins - loneliness_time * 2
+	
+	if farm_time >= 0:
+		farm_time -= delta_mins
+		refresh_farm.emit(false)
+		if farm_time <= 0: finish_farm()
+	
 	if environment == "outside":
 		leaf_collection_progress += max_leaves_per_minute * normal_mins * (happiness / max_happiness) * (rest / max_rest)
 		if leaf_collection_progress > 1:
@@ -260,3 +275,19 @@ func update_stuff() -> void:
 	
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
 	last_update = now
+
+func start_farm(farmed):
+	if farm_time > 0: return
+	farm_action = farmed
+	var recipe: Recipe = recipes[farmed]
+	if resources_count[recipe.input] < recipe.input_amount: return
+	farm_time = recipe.mins
+	resources_count[recipe.input] -= recipe.input_amount
+	if recipe.input == 0: leaves -= recipe.input_amount
+	refresh_farm.emit(true)
+
+func finish_farm():
+	var recipe = recipes[farm_action]
+	resources_count[recipe.output] += recipe.output_amount
+	farm_action = -1
+	refresh_farm.emit(true)

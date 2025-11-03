@@ -12,6 +12,7 @@ extends Control
 @onready var farm = $farm
 @onready var farm_cont = $farm/VBoxContainer/ScrollContainer/VBoxContainer
 @onready var farm_copy = $farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer
+@onready var timenode = $farm/VBoxContainer/timleft
 @onready var close_shop_btn = $shop/VBoxContainer/leave
 @onready var uncollected_bar: ProgressBar = $vbox/leafbar/ProgressBar
 @onready var settings = $settings
@@ -81,6 +82,7 @@ var shedboi_num = -1
 func _ready() -> void:
 	GameManager.stats_changed.connect(_on_stats_changed)
 	GameManager.status_message.connect(_on_status_message)
+	GameManager.refresh_farm.connect(run_farm)
 	collect_btn.pressed.connect(_on_collect_pressed)
 	feed_btn.pressed.connect(_on_feed_pressed)
 	shop_btn.pressed.connect(_on_shop_pressed)
@@ -253,18 +255,33 @@ func _on_timeman_value_changed(value: float) -> void:
 
 func _on_farm_pressed() -> void:
 	farm.show()
+	run_farm(true)
+
+func run_farm(full):
+	if not full:
+		timenode.text = "Currently making: " + GameManager.recipes[GameManager.farm_action].recipe_name + " (" + str(int(GameManager.farm_time * 10) / 10.) + " minutes left)"
+		return
+	for child in farm_cont.get_children():
+		if child != farm_copy: child.queue_free()
+	if GameManager.farm_time > 0:
+		timenode.text = "Currently making: " + GameManager.recipes[GameManager.farm_action].recipe_name + " (" + str(int(GameManager.farm_time * 10) / 10.) + " minutes left)"
+		timenode.show()
+	else:
+		timenode.hide()
 	for recipe: Recipe in GameManager.recipes:
 		if recipe.location != "Farm": continue
+		if recipe.input == 0: GameManager.resources_count[0] = int(GameManager.leaves)
 		var recipe_btn = farm_copy.duplicate()
 		recipe_btn.get_node("buton/VBoxContainer/title").text = recipe.recipe_name
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/Label").text = "x" + str(recipe.input_amount) + " " + GameManager.resources[recipe.input].title
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/TextureRect").texture = load(GameManager.resources[recipe.input].texture)
-		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/Label2").text = "Owned: " + str(GameManager.resources_count[recipe.input])
+		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/input/Label2").text = "Owned: " + str(int(GameManager.resources_count[recipe.input]))
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/Label").text = "x" + str(recipe.output_amount) + " " + GameManager.resources[recipe.output].title
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/TextureRect").texture = load(GameManager.resources[recipe.output].texture)
-		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/Label3").text = "Owned: " + str(GameManager.resources_count[recipe.output])
+		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/Label3").text = "Owned: " + str(int(GameManager.resources_count[recipe.output]))
 		if GameManager.resources[recipe.output].food: recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/output/TextureRect").tooltip_text = "Recovers " + str(GameManager.resources[recipe.output].recovery) + " Happiness"
 		recipe_btn.get_node("buton/VBoxContainer/HBoxContainer/TextureRect/timen").text = str(recipe.mins) + "m"
+		recipe_btn.get_node("buton").pressed.connect(func(): GameManager.start_farm(GameManager.recipes.find(recipe)))
 		farm_cont.add_child(recipe_btn)
 		recipe_btn.show()
 
