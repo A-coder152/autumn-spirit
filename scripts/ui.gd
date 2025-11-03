@@ -66,6 +66,7 @@ extends Control
 ]
 @onready var jumpscare = $jumpscare
 @onready var jumpscare_sound = $jumpscaresfx
+@onready var particle = $particle
 
 var shop_view_idx = 0
 var shedboi_positions = [
@@ -83,11 +84,13 @@ var shedboi_descs = [
 	"time before loneliness"
 ]
 var shedboi_num = -1
+var cur_theme: GameTheme
 
 func _ready() -> void:
 	GameManager.stats_changed.connect(_on_stats_changed)
 	GameManager.status_message.connect(_on_status_message)
 	GameManager.refresh_farm.connect(run_farm)
+	GameManager.particles.connect(particles)
 	collect_btn.pressed.connect(_on_collect_pressed)
 	feed_btn.pressed.connect(_on_feed_pressed)
 	shop_btn.pressed.connect(_on_shop_pressed)
@@ -103,7 +106,7 @@ func _ready() -> void:
 	_on_stats_changed(GameManager.leaves, GameManager.uncollected_leaves, GameManager.happiness, GameManager.rest)
 
 func apply_theme():
-	var cur_theme: GameTheme = load(GameManager.theme)
+	cur_theme = load(GameManager.theme)
 	GameManager.resources = cur_theme.resources
 	sprite.texture = cur_theme.main_char
 	sprite.scale = cur_theme.main_char_scale if GameManager.environment == "outside" else cur_theme.main_char_scale * 2./3.
@@ -173,9 +176,7 @@ func _on_buy(num) -> void:
 
 func _on_autosave_timeout() -> void:
 	GameManager.autosave_timeout()
-	print(GameManager.theme)
 	if GameManager.theme == "res://themes/spooky_theme.tres" and randf() > 0.8:
-		print("get spooked lol")
 		jumpscare.show()
 		jumpscare_sound.play(0.2)
 		await get_tree().create_timer(2).timeout
@@ -323,3 +324,22 @@ func _on_leave_farm_pressed() -> void:
 	farm.hide()
 	for child in farm_cont.get_children():
 		if child != farm_copy: child.queue_free()
+
+func particles(texture, number, pos):
+	var im_watching_u = []
+	var sjjtween = create_tween().set_parallel()
+	for i in range(sqrt(number * 3)):
+		var new_particle = particle.duplicate()
+		new_particle.texture = texture
+		new_particle.position = pos + Vector2(2, 0.5) * randi_range(-50, 50)
+		var lolol = randf_range(0.3, 1.5)
+		new_particle.scale *= lolol
+		new_particle.modulate = Color(1, 1, 1, 1 / 1.5 * lolol)
+		add_child(new_particle)
+		new_particle.show()
+		im_watching_u.append(new_particle)
+		sjjtween.tween_property(new_particle, "position", new_particle.position + Vector2(0, -200), 0.7)
+		sjjtween.tween_property(new_particle, "modulate", Color(1, 1, 1, 0), 0.7).set_ease(Tween.EASE_IN)
+	await sjjtween.finished
+	sjjtween.kill()
+	for M in im_watching_u: M.queue_free()

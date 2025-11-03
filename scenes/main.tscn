@@ -1308,6 +1308,15 @@ text = "Exit Settings"
 custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 
+[node name="particle" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_tbgi4")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="jumpscare" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1

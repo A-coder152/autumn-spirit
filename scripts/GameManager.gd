@@ -3,6 +3,7 @@ extends Node
 signal stats_changed(leaves, uncollected, happiness, rest)
 signal status_message(msg)
 signal refresh_farm(full)
+signal particles(texture, number, pos)
 
 var theme = "res://themes/fall_theme.tres"
 var environment = "outside"
@@ -155,6 +156,7 @@ func collect_leaves() -> void:
 	if uncollected_leaves <= 0:
 		_notify_status("No uncollected leaves")
 		return
+	particles.emit(load(theme).resource, uncollected_leaves / 3, Vector2(380, 340))
 	leaves += uncollected_leaves
 	uncollected_leaves = 0
 	emit_signal("stats_changed", leaves, uncollected_leaves, happiness, rest)
@@ -294,4 +296,5 @@ func finish_farm():
 
 func spend_food(resource):
 	resources_count[resources.find(resource)] -= 1
+	particles.emit(preload("res://images/happiness.png"), resource.recovery, Vector2(380, 340))
 	happiness += resource.recovery
