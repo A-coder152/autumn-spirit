@@ -87,6 +87,9 @@ var shedboi_num = -1
 var cur_theme: GameTheme
 
 func _ready() -> void:
+	var data = Save.load_game()
+	if data.is_empty():
+		$thememan.show()
 	GameManager.stats_changed.connect(_on_stats_changed)
 	GameManager.status_message.connect(_on_status_message)
 	GameManager.refresh_farm.connect(run_farm)
@@ -343,3 +346,11 @@ func particles(texture, number, pos):
 	await sjjtween.finished
 	sjjtween.kill()
 	for M in im_watching_u: M.queue_free()
+
+
+func _on_ghost_theme_pressed() -> void:
+	$thememan.hide()
+	_on_switch_theme_pressed()
+
+func _on_fall_theme_pressed() -> void:
+	$thememan.hide()
