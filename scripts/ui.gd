@@ -13,6 +13,9 @@ extends Control
 @onready var farm_cont = $farm/VBoxContainer/ScrollContainer/VBoxContainer
 @onready var farm_copy = $farm/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer
 @onready var timenode = $farm/VBoxContainer/timleft
+@onready var feedboi = $feedboi
+@onready var feedboi_copy = $feedboi/VBoxContainer/Button
+@onready var feedboi_sigma_label = $feedboi/VBoxContainer/Label
 @onready var close_shop_btn = $shop/VBoxContainer/leave
 @onready var uncollected_bar: ProgressBar = $vbox/leafbar/ProgressBar
 @onready var settings = $settings
@@ -130,7 +133,29 @@ func _on_collect_pressed() -> void:
 	GameManager.collect_leaves()
 
 func _on_feed_pressed() -> void:
-	GameManager.boost_happiness(10.0)
+	feedboi.visible = !feedboi.visible
+	run_feedboi()
+
+func run_feedboi():
+	print("google")
+	if !feedboi.visible: return
+	for child in feedboi.get_child(0).get_children():
+		if child != feedboi_copy and child != feedboi_sigma_label: child.queue_free()
+	for resource in GameManager.resources:
+		print("figma")
+		if not resource.food or GameManager.resources_count[GameManager.resources.find(resource)] <= 0: continue
+		print("auauau")
+		var new_guy = feedboi_copy.duplicate()
+		new_guy.get_node("HBoxContainer/TextureRect").texture = load(resource.texture)
+		new_guy.get_node("HBoxContainer/VBoxContainer/Label").text = resource.title
+		new_guy.get_node("HBoxContainer/VBoxContainer/Label2").text = "x" + str(int(GameManager.resources_count[GameManager.resources.find(resource)])) + " Available \n+" + str(resource.recovery) + " Happiness"
+		new_guy.pressed.connect(func(): GameManager.spend_food(resource); run_feedboi())
+		new_guy.show()
+		feedboi_copy.get_parent().add_child(new_guy)
+	if len(feedboi.get_child(0).get_children()) <= 2: 
+		feedboi_sigma_label.show()
+	else:
+		feedboi_sigma_label.hide()
 
 func _on_shop_pressed() -> void:
 	shop_view_idx = 0

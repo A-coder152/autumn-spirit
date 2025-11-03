@@ -623,6 +623,69 @@ text = "You don't own any item that belongs here!"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="feedboi" type="ScrollContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 0
+offset_left = 895.0
+offset_top = 307.0
+offset_right = 1140.0
+offset_bottom = 488.0
+mouse_filter = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="feedboi"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="feedboi/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="feedboi/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="feedboi/VBoxContainer/Button/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_eb6dy")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="feedboi/VBoxContainer/Button/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="feedboi/VBoxContainer/Button/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Light Blue"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="feedboi/VBoxContainer/Button/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "+5% happiness regen"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="feedboi/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+text = "You don't own any food!"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="settinger" type="TextureButton" parent="."]
 layout_mode = 2
 offset_left = 24.0
@@ -1237,7 +1300,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
-text = "Leave Shop"
+text = "Exit Settings"
 
 [node name="Control3" type="Control" parent="settings/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 23)

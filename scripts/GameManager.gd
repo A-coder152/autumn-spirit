@@ -291,3 +291,7 @@ func finish_farm():
 	resources_count[recipe.output] += recipe.output_amount
 	farm_action = -1
 	refresh_farm.emit(true)
+
+func spend_food(resource):
+	resources_count[resources.find(resource)] -= 1
+	happiness += resource.recovery
